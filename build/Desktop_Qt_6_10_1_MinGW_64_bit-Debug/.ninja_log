@@ -1,0 +1,9 @@
+# ninja log v7
+6	451	7913505569636525	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+6	451	7913505569636525	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+6	451	7913505569636525	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+6	451	7913505569636525	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+456	1934	7913505570249648	CMakeFiles/Black-Scholes.dir/Black-Scholes_autogen/mocs_compilation.cpp.obj	e4ad2e74462eafee
+461	2001	7913505570305477	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+459	2047	7913505570274696	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+2047	2233	7913505586157890	Black-Scholes.exe	2e499f4e41985d3
