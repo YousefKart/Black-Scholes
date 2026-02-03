@@ -4,6 +4,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <cmath>
+#include "Functions.h"
 
 #define INIT_STOCK_PRICE 100.0
 #define INIT_STRIKE_PRICE 100.0
@@ -60,6 +61,8 @@ int main(int argc, char *argv[])
 
     auto *d1Label = new QLabel(QString("d1: --"));
     auto *d2Label = new QLabel(QString("d2: --"));
+    auto *Nd1Label = new QLabel(QString("N: --"));
+    auto *Nd2Label = new QLabel(QString("N: --"));
 
     auto recompute = [&]() {
         auto S = spinS->value();
@@ -67,12 +70,18 @@ int main(int argc, char *argv[])
         auto r = spinR->value();
         auto sigma = spinSigma->value();
         auto T = spinT->value();
+        auto q = 0.0; // TODO: Add dividend yields
 
-        auto d1 = (std::log(S/K) + (r + sigma*sigma*0.5) * T) / (sigma*std::sqrt(T));
-        auto d2 = d1 - sigma*std::sqrt(T);
+        auto d1 = Functions::computeD1(S, K, r, q, sigma, T);
+        auto d2 = Functions::computeD2(d1, sigma, T);
+        auto Nd1 = Functions::computeN(d1);
+        auto Nd2 = Functions::computeN(d2);
 
         d1Label->setText(QString("d1: %1").arg(d1));
         d2Label->setText(QString("d2: %1").arg(d2));
+        Nd1Label->setText(QString("N(d1): %1").arg(Nd1));
+        Nd2Label->setText(QString("N(d2): %1").arg(Nd2));
+
     };
 
     // Recompute on variable update
@@ -91,6 +100,8 @@ int main(int argc, char *argv[])
     layout->addWidget(spinT);
     layout->addWidget(d1Label);
     layout->addWidget(d2Label);
+    layout->addWidget(Nd1Label);
+    layout->addWidget(Nd2Label);
     w.setLayout(layout);
 
     recompute();

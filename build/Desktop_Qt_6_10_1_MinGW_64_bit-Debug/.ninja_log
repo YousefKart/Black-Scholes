@@ -1,63 +1,94 @@
 # ninja log v7
-20	124	7918451446198889	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-20	124	7918451446198889	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-20	124	7918451446198889	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-20	124	7918451446198889	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+36	155	7918482715746681	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+36	155	7918482715746681	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+36	155	7918482715746681	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+36	155	7918482715746681	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
 456	1934	7913505570249648	CMakeFiles/Black-Scholes.dir/Black-Scholes_autogen/mocs_compilation.cpp.obj	e4ad2e74462eafee
-128	1562	7918451447281772	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
-125	1615	7918451447251778	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
-1615	1754	7918451462143619	Black-Scholes.exe	2e499f4e41985d3
-25	142	7918452886328918	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-25	142	7918452886328918	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-25	142	7918452886328918	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-25	142	7918452886328918	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-146	1633	7918452887544226	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
-143	1667	7918452887504227	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
-1667	1796	7918452902745935	Black-Scholes.exe	2e499f4e41985d3
-28	143	7918453039974513	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-28	143	7918453039974513	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-28	143	7918453039974513	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-28	143	7918453039974513	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-147	1662	7918453041154952	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
-143	1708	7918453041124944	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
-1708	1832	7918453056761379	Black-Scholes.exe	2e499f4e41985d3
-23	128	7918457645394869	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-23	128	7918457645394869	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-23	128	7918457645394869	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-23	128	7918457645394869	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-131	1558	7918457646481385	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
-26	138	7918458029397192	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-26	138	7918458029397192	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-26	138	7918458029397192	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-26	138	7918458029397192	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-142	1514	7918458030548599	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
-139	1568	7918458030528597	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
-1568	1697	7918458044814275	Black-Scholes.exe	2e499f4e41985d3
-24	135	7918458314653525	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-24	135	7918458314653525	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-24	135	7918458314653525	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-24	135	7918458314653525	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-139	1556	7918458315784186	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
-136	1613	7918458315754187	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
-1613	1736	7918458330526151	Black-Scholes.exe	2e499f4e41985d3
-28	148	7918462926618969	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-28	148	7918462926618969	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-28	148	7918462926618969	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-28	148	7918462926618969	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-151	1623	7918462927844312	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
-148	1670	7918462927824274	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
-1670	1798	7918462943032732	Black-Scholes.exe	2e499f4e41985d3
-27	144	7918464978801394	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-27	144	7918464978801394	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-27	144	7918464978801394	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-27	144	7918464978801394	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-148	1647	7918464980011825	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
-145	1742	7918464979971831	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
-1742	1870	7918464995948384	Black-Scholes.exe	2e499f4e41985d3
-23	133	7918469644384258	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-23	133	7918469644384258	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-23	133	7918469644384258	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
-23	133	7918469644384258	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
-136	1557	7918469645507972	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
-133	1662	7918469645482892	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
-1663	1790	7918469660777920	Black-Scholes.exe	2e499f4e41985d3
+158	1696	7918482716973160	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+156	1706	7918482716943156	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1706	1976	7918482732440903	Black-Scholes.exe	2e499f4e41985d3
+24	141	7918539777421115	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+24	141	7918539777421115	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+24	141	7918539777421115	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+24	141	7918539777421115	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+148	406	7918539778662515	CMakeFiles/Black-Scholes.dir/Functions.cpp.obj	a8df0c0197eef1c0
+145	1688	7918539778632514	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+142	1817	7918539778599642	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1817	2119	7918539795351042	Black-Scholes.exe	1fd8704967da2cb6
+24	150	7918540446047996	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+24	150	7918540446047996	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+24	150	7918540446047996	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+24	150	7918540446047996	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+157	310	7918540447372729	CMakeFiles/Black-Scholes.dir/Functions.cpp.obj	a8df0c0197eef1c0
+154	1778	7918540447342735	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+150	1911	7918540447312194	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1911	2058	7918540464921527	Black-Scholes.exe	1fd8704967da2cb6
+25	145	7918543297665061	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	145	7918543297665061	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+25	145	7918543297665061	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	145	7918543297665061	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+152	320	7918543298936566	CMakeFiles/Black-Scholes.dir/Functions.cpp.obj	a8df0c0197eef1c0
+149	1664	7918543298896398	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+146	1798	7918543298876397	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1798	1934	7918543315395701	Black-Scholes.exe	1fd8704967da2cb6
+25	155	7918543488261537	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	155	7918543488261537	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+25	155	7918543488261537	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	155	7918543488261537	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+158	1720	7918543489585112	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+155	1834	7918543489555116	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1835	1965	7918543506349584	Black-Scholes.exe	1fd8704967da2cb6
+27	153	7918543595890188	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+27	153	7918543595890188	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+27	153	7918543595890188	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+27	153	7918543595890188	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+157	1708	7918543597186518	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+154	1852	7918543597156514	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1852	1985	7918543614136722	Black-Scholes.exe	1fd8704967da2cb6
+26	155	7918543712480589	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+26	155	7918543712480589	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+26	155	7918543712480589	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+26	155	7918543712480589	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+158	1690	7918543713813604	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+156	1823	7918543713778557	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1823	1968	7918543730458451	Black-Scholes.exe	1fd8704967da2cb6
+25	140	7918544660677996	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	140	7918544660677996	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+25	140	7918544660677996	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	140	7918544660677996	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+143	299	7918544661861018	CMakeFiles/Black-Scholes.dir/Functions.cpp.obj	a8df0c0197eef1c0
+140	1556	7918544661831059	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+1556	1704	7918544675988657	Black-Scholes.exe	1fd8704967da2cb6
+28	149	7918544793493379	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+28	149	7918544793493379	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+28	149	7918544793493379	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+28	149	7918544793493379	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+153	1714	7918544794742828	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+150	1765	7918544794711154	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1766	1910	7918544810875973	Black-Scholes.exe	1fd8704967da2cb6
+25	151	7918544866163514	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	151	7918544866163514	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+25	151	7918544866163514	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	151	7918544866163514	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+155	1681	7918544867468565	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+152	1816	7918544867438574	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1816	1961	7918544884080062	Black-Scholes.exe	1fd8704967da2cb6
+28	151	7918546061424785	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+28	151	7918546061424785	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+28	151	7918546061424785	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+28	151	7918546061424785	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+154	1670	7918546062692543	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+25	154	7918546239913372	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	154	7918546239913372	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+25	154	7918546239913372	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	154	7918546239913372	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+158	1761	7918546241237613	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+155	1894	7918546241212534	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1894	2035	7918546258597152	Black-Scholes.exe	1fd8704967da2cb6
+25	149	7918546564418624	Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	149	7918546564418624	Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+25	149	7918546564418624	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/timestamp	2e54eb7eff645ace
+25	149	7918546564418624	C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/mocs_compilation.cpp	2e54eb7eff645ace
+153	1685	7918546565694327	CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj	39bf66f90719bc16
+150	1818	7918546565674319	CMakeFiles/Black-Scholes.dir/main.cpp.obj	b5a250b72ecbb767
+1818	1963	7918546582347594	Black-Scholes.exe	1fd8704967da2cb6

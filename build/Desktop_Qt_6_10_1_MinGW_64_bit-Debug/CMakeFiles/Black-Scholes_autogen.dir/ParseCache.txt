@@ -380,3 +380,5 @@ C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/mainwi
 C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/main.cpp
 C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/mainwindow.cpp
  uic:./ui_mainwindow.h
+C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/Functions.h
+C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black Scholes/Black-Scholes/Functions.cpp
