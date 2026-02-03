@@ -3,13 +3,14 @@
 #include <QDoubleSpinBox>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <cmath>
 
-#define INIT_YEAR 0
-#define INIT_RISK 0.1
-#define INIT_PRICE 100.0
-#define INIT_MU 5
-#define INIT_SIGMA 0.01
+#define INIT_STOCK_PRICE 100.0
+#define INIT_STRIKE_PRICE 100.0
+#define INIT_RISK_FREE_RATE 0.1
 #define INIT_VOLATILITY 0.2
+#define INIT_TIME_TO_EXPIRY 1.0
+
 
 int main(int argc, char *argv[])
 {
@@ -19,52 +20,80 @@ int main(int argc, char *argv[])
     w.setWindowTitle("Black Scholes Model");
     w.resize(600,400);
 
-    auto *spinT = new QDoubleSpinBox();
-    spinT->setRange(0,1000);
-    spinT->setValue(INIT_YEAR);
-    spinT->setPrefix("T = ");
-
-    auto *spinR = new QDoubleSpinBox();
-    spinR->setRange(0,1);
-    spinR->setValue(INIT_RISK);
-    spinR->setPrefix("r = ");
-
+    // Stock Price
     auto *spinS = new QDoubleSpinBox();
-    spinS->setRange(0,1000000);
-    spinS->setValue(INIT_PRICE);
+    spinS->setRange(0.01,1000000.0);
+    spinS->setValue(INIT_STOCK_PRICE);
     spinS->setPrefix("S = ");
 
-    auto *spinMu = new QDoubleSpinBox();
-    spinMu->setRange(0,1000000);
-    spinMu->setValue(INIT_MU);
-    spinMu->setPrefix(QString::fromUtf8(u8"\u03BC = "));
+    // Strike Price
+    auto *spinK = new QDoubleSpinBox();
+    spinK->setRange(0.01,1000000.0);
+    spinK->setValue(INIT_STRIKE_PRICE);
+    spinK->setPrefix("K = ");
 
+    // Risk-Free Rate (Annual)
+    auto *spinR = new QDoubleSpinBox();
+    spinR->setRange(0.0,1.0);
+    spinR->setDecimals(4);
+    spinR->setSingleStep(0.01);
+    spinR->setValue(INIT_RISK_FREE_RATE);
+    spinR->setPrefix("r = ");
+    spinR->setSuffix("%");
+
+    // Volatility (Annual)
     auto *spinSigma = new QDoubleSpinBox();
-    spinSigma->setRange(0,1);
-    spinSigma->setValue(INIT_SIGMA);
+    spinSigma->setRange(0.0001,5.0);
+    spinSigma->setDecimals(4);
+    spinSigma->setSingleStep(0.01);
+    spinSigma->setValue(INIT_VOLATILITY);
     spinSigma->setPrefix(QString::fromUtf8(u8"\u03C3 = "));
 
-    auto *spinA = new QDoubleSpinBox();
-    spinA->setRange(0,1);
-    spinA->setValue(INIT_VOLATILITY);
-    spinA->setPrefix("a = ");
+    // Time to Expiry (Years)
+    auto *spinT = new QDoubleSpinBox();
+    spinT->setRange(0.0001,1000.0);
+    spinT->setDecimals(6);
+    spinT->setSingleStep(0.1);
+    spinT->setValue(INIT_TIME_TO_EXPIRY);
+    spinT->setPrefix("T = ");
+    spinT->setSuffix(" Years");
 
-    auto *priceLabel = new QLabel(QString("Price: %1").arg(INIT_PRICE));
+    auto *d1Label = new QLabel(QString("d1: --"));
+    auto *d2Label = new QLabel(QString("d2: --"));
 
+    auto recompute = [&]() {
+        auto S = spinS->value();
+        auto K = spinK->value();
+        auto r = spinR->value();
+        auto sigma = spinSigma->value();
+        auto T = spinT->value();
+
+        auto d1 = (std::log(S/K) + (r + sigma*sigma*0.5) * T) / (sigma*std::sqrt(T));
+        auto d2 = d1 - sigma*std::sqrt(T);
+
+        d1Label->setText(QString("d1: %1").arg(d1));
+        d2Label->setText(QString("d2: %1").arg(d2));
+    };
+
+    // Recompute on variable update
+    QObject::connect(spinS, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
+    QObject::connect(spinK, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
+    QObject::connect(spinR, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
+    QObject::connect(spinSigma, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
+    QObject::connect(spinT, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
+
+    // Layout
     auto *layout = new QVBoxLayout();
     layout->addWidget(spinS);
+    layout->addWidget(spinK);
     layout->addWidget(spinR);
-    layout->addWidget(spinMu);
     layout->addWidget(spinSigma);
-    layout->addWidget(spinA);
-    layout->addWidget(priceLabel);
+    layout->addWidget(spinT);
+    layout->addWidget(d1Label);
+    layout->addWidget(d2Label);
     w.setLayout(layout);
 
-    QObject::connect(spinS, QOverload<double>::of(&QDoubleSpinBox::valueChanged),
-                    [&](double S) {
-                    priceLabel->setText(QString("Price: %1").arg(S));
-    });
-
+    recompute();
     w.show();
     return a.exec();
 }
