@@ -4,6 +4,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <cmath>
+#include "qcustomplot.h"
 #include "Functions.h"
 
 #define INIT_STOCK_PRICE 100.0
