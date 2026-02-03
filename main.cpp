@@ -35,9 +35,9 @@ int main(int argc, char *argv[])
 
     // Risk-Free Rate (Annual)
     auto *spinR = new QDoubleSpinBox();
-    spinR->setRange(0.0,1.0);
+    spinR->setRange(0.0,100.0);
     spinR->setDecimals(4);
-    spinR->setSingleStep(0.01);
+    spinR->setSingleStep(0.1);
     spinR->setValue(INIT_RISK_FREE_RATE);
     spinR->setPrefix("r = ");
     spinR->setSuffix("%");
@@ -50,37 +50,43 @@ int main(int argc, char *argv[])
     spinSigma->setValue(INIT_VOLATILITY);
     spinSigma->setPrefix(QString::fromUtf8(u8"\u03C3 = "));
 
-    // Time to Expiry (Years)
+    // Time to Expiry (Days)
     auto *spinT = new QDoubleSpinBox();
-    spinT->setRange(0.0001,1000.0);
-    spinT->setDecimals(6);
-    spinT->setSingleStep(0.1);
+    spinT->setRange(0.0001,10000.0);
+    spinT->setDecimals(2);
+    spinT->setSingleStep(1);
     spinT->setValue(INIT_TIME_TO_EXPIRY);
     spinT->setPrefix("T = ");
-    spinT->setSuffix(" Years");
+    spinT->setSuffix(" Days");
 
     auto *d1Label = new QLabel(QString("d1: --"));
     auto *d2Label = new QLabel(QString("d2: --"));
-    auto *Nd1Label = new QLabel(QString("N: --"));
-    auto *Nd2Label = new QLabel(QString("N: --"));
+    auto *Nd1Label = new QLabel(QString("N(d1): --"));
+    auto *Nd2Label = new QLabel(QString("N(d2): --"));
+    auto *CLabel = new QLabel(QString("Call: --"));
+    auto *PLabel = new QLabel(QString("Put: --"));
 
     auto recompute = [&]() {
         auto S = spinS->value();
         auto K = spinK->value();
-        auto r = spinR->value();
-        auto sigma = spinSigma->value();
-        auto T = spinT->value();
+        auto r = spinR->value() / 100.0; // Convert from % to 0.0-1.0 scale
         auto q = 0.0; // TODO: Add dividend yields
+        auto sigma = spinSigma->value();
+        auto T = spinT->value() / 365.25; // Convert from days to years
 
         auto d1 = Functions::computeD1(S, K, r, q, sigma, T);
-        auto d2 = Functions::computeD2(d1, sigma, T);
+        auto d2 = Functions::computeD2(sigma, T, d1);
         auto Nd1 = Functions::computeN(d1);
         auto Nd2 = Functions::computeN(d2);
+        auto C = Functions::computeC(S, K, r, q, T, d1, d2);
+        auto P = Functions::computeP(S, K, r, q, T, d1, d2);
 
         d1Label->setText(QString("d1: %1").arg(d1));
         d2Label->setText(QString("d2: %1").arg(d2));
         Nd1Label->setText(QString("N(d1): %1").arg(Nd1));
         Nd2Label->setText(QString("N(d2): %1").arg(Nd2));
+        CLabel->setText(QString("Call: %1").arg(C));
+        PLabel->setText(QString("Put: %1").arg(P));
 
     };
 
@@ -98,13 +104,17 @@ int main(int argc, char *argv[])
     layout->addWidget(spinR);
     layout->addWidget(spinSigma);
     layout->addWidget(spinT);
+
     layout->addWidget(d1Label);
     layout->addWidget(d2Label);
     layout->addWidget(Nd1Label);
     layout->addWidget(Nd2Label);
-    w.setLayout(layout);
+    layout->addWidget(CLabel);
+    layout->addWidget(PLabel);
 
+    w.setLayout(layout);
     recompute();
     w.show();
+
     return a.exec();
 }
