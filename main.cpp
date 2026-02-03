@@ -11,7 +11,7 @@
 #define INIT_STRIKE_PRICE 100.0
 #define INIT_RISK_FREE_RATE 0.1
 #define INIT_VOLATILITY 0.2
-#define INIT_TIME_TO_EXPIRY 1.0
+#define INIT_TIME_TO_EXPIRY 365.0
 
 
 int main(int argc, char *argv[])
@@ -21,6 +21,14 @@ int main(int argc, char *argv[])
     QWidget w;
     w.setWindowTitle("Black Scholes Model");
     w.resize(600,400);
+
+    // Plot
+    auto *plot = new QCustomPlot();
+    plot->addGraph();
+    plot->xAxis->setLabel("Stock Price (S)");
+    plot->yAxis->setLabel("Call Option Price");
+    const int SAMPLES = 200;
+    QVector<double> plotX(SAMPLES), plotY(SAMPLES);
 
     // Stock Price
     auto *spinS = new QDoubleSpinBox();
@@ -89,9 +97,26 @@ int main(int argc, char *argv[])
         CLabel->setText(QString("Call: %1").arg(C));
         PLabel->setText(QString("Put: %1").arg(P));
 
+        double minS = 0.5*K;
+        double maxS = 1.5*K;
+        double deltaS = (maxS - minS) / (SAMPLES - 1);
+
+        for (int i = 0; i < SAMPLES; i++) {
+            double sample = minS + i * deltaS;
+            double d1 = Functions::computeD1(sample, K, r, q, sigma, T);
+            double d2 = Functions::computeD2(sigma, T, d1);
+            double C = Functions::computeC(sample, K, r, q, T, d1, d2);
+
+            plotX[i] = sample;
+            plotY[i] = C;
+        }
+
+        plot->graph(0)->setData(plotX, plotY);
+        plot->rescaleAxes();
+        plot->replot();
     };
 
-    // Recompute on variable update
+    // Recompute on update
     QObject::connect(spinS, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
     QObject::connect(spinK, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
     QObject::connect(spinR, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
@@ -105,6 +130,8 @@ int main(int argc, char *argv[])
     layout->addWidget(spinR);
     layout->addWidget(spinSigma);
     layout->addWidget(spinT);
+
+    layout->addWidget(plot);
 
     layout->addWidget(d1Label);
     layout->addWidget(d2Label);

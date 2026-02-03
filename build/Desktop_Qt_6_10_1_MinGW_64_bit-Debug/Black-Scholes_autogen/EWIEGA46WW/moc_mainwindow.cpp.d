@@ -1,5 +1,5 @@
-C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black\ Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black\ Scholes/Black-Scholes/mainwindow.h \
-  C:/Users/Brose/OneDrive/Documents/Code/CPP/Qt/Black\ Scholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/moc_predefs.h \
+C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/mainwindow.h \
+  C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/moc_predefs.h \
   C:/Qt/6.10.1/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.1/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.10.1/mingw_64/include/QtCore/q20iterator.h \
