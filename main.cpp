@@ -11,14 +11,13 @@
 #define INIT_STRIKE_PRICE 110.0
 #define INIT_RISK_FREE_RATE 10.0
 #define INIT_VOLATILITY 0.2
-#define INIT_TIME_TO_EXPIRY 365.0
+#define INIT_MIN_TIME_TO_EXPIRY 0.00
+#define INIT_MAX_TIME_TO_EXPIRY 365.0
 
+#define SAMPLES 200
 
 int main(int argc, char *argv[])
 {
-    const int SAMPLES = 200;
-    QVector<double> plotX(SAMPLES), plotY0(SAMPLES), plotY1(SAMPLES);
-
     QApplication a(argc, argv);
 
     QWidget w;
@@ -27,24 +26,30 @@ int main(int argc, char *argv[])
 
     // Plot
     auto *plot = new QCustomPlot();
-    plot->addGraph(); // Graph 0 for calls
-    plot->addGraph(); // Graph 1 for puts
-    plot->xAxis->setLabel("Stock Price (S)");
-    plot->yAxis->setLabel("Option Price");
+    plot->addGraph();
+    plot->xAxis->setLabel("Years (T)");
+    plot->yAxis->setLabel("Stock Price (S)");
     plot->setMinimumHeight(300);
 
-    // Plot Pens
-    QPen pen0, pen1;
-    pen0.setColor(Qt::blue);
-    pen1.setColor(Qt::red);
-    plot->graph(0)->setPen(pen0);
-    plot->graph(1)->setPen(pen1);
+    // Color Map & Legend
+    auto *colorMap = new QCPColorMap(plot->xAxis, plot->yAxis);
+    auto *colorScale = new QCPColorScale(plot);
+    plot->plotLayout()->addElement(0, 1, colorScale);
+    colorScale->setType(QCPAxis::atRight);
+    colorScale->axis()->setLabel("Put Price");
+    colorScale->axis()->setNumberFormat("f");
+    colorScale->axis()->setNumberPrecision(2);
+    colorMap->setColorScale(colorScale);
+    colorMap->setGradient(QCPColorGradient::gpJet);
+    colorMap->setInterpolate(true);
+    colorMap->setTightBoundary(true);
+    plot->plotLayout()->setColumnStretchFactor(0,4);
+    plot->plotLayout()->setColumnStretchFactor(1,1);
 
-    // Plot Legend
-    plot->legend->setVisible(true);
-    plot->legend->setBrush(QColor(255,255,255,100));
-    plot->graph(0)->setName("Calls");
-    plot->graph(1)->setName("Puts");
+
+    // Display Type (Calls/Puts)
+    auto *pushToggleCP = new QPushButton();
+    pushToggleCP->setCheckable(true);
 
     // Stock Price
     auto *spinS = new QDoubleSpinBox();
@@ -61,7 +66,7 @@ int main(int argc, char *argv[])
     // Risk-Free Rate (Annual)
     auto *spinR = new QDoubleSpinBox();
     spinR->setRange(0.0,100.0);
-    spinR->setDecimals(4);
+    spinR->setDecimals(2);
     spinR->setSingleStep(0.1);
     spinR->setValue(INIT_RISK_FREE_RATE);
     spinR->setPrefix("r = ");
@@ -75,21 +80,23 @@ int main(int argc, char *argv[])
     spinSigma->setValue(INIT_VOLATILITY);
     spinSigma->setPrefix(QString::fromUtf8(u8"\u03C3 = "));
 
-    // Time to Expiry (Days)
-    auto *spinT = new QDoubleSpinBox();
-    spinT->setRange(0.0001,10000.0);
-    spinT->setDecimals(2);
-    spinT->setSingleStep(1);
-    spinT->setValue(INIT_TIME_TO_EXPIRY);
-    spinT->setPrefix("T = ");
-    spinT->setSuffix(" Days");
+    // Mininum Time to Expiry (Days)
+    auto *spinMinT = new QDoubleSpinBox();
+    spinMinT->setRange(0.0001,10000.0);
+    spinMinT->setDecimals(2);
+    spinMinT->setSingleStep(1);
+    spinMinT->setValue(INIT_MIN_TIME_TO_EXPIRY);
+    spinMinT->setPrefix("T = ");
+    spinMinT->setSuffix(" Days");
 
-    auto *d1Label = new QLabel(QString("d1: --"));
-    auto *d2Label = new QLabel(QString("d2: --"));
-    auto *Nd1Label = new QLabel(QString("N(d1): --"));
-    auto *Nd2Label = new QLabel(QString("N(d2): --"));
-    auto *CLabel = new QLabel(QString("Call: --"));
-    auto *PLabel = new QLabel(QString("Put: --"));
+    // Maximum Time to Expiry (Days)
+    auto *spinMaxT = new QDoubleSpinBox();
+    spinMaxT->setRange(0.0001,10000.0);
+    spinMaxT->setDecimals(2);
+    spinMaxT->setSingleStep(1);
+    spinMaxT->setValue(INIT_MAX_TIME_TO_EXPIRY);
+    spinMaxT->setPrefix("T = ");
+    spinMaxT->setSuffix(" Days");
 
     auto recompute = [&]() {
         auto S = spinS->value();
@@ -97,7 +104,9 @@ int main(int argc, char *argv[])
         auto r = spinR->value() / 100.0; // Convert from % to 0.0-1.0 scale
         auto q = 0.0; // TODO: Add dividend yields
         auto sigma = spinSigma->value();
-        auto T = spinT->value() / 365.25; // Convert from days to years
+        auto minT = spinMinT->value() / 365.25; // Convert from days to years
+        auto maxT = spinMaxT->value() / 365.25; // Convert from days to years
+        auto T = maxT - minT;
 
         auto d1 = Functions::computeD1(S, K, r, q, sigma, T);
         auto d2 = Functions::computeD2(sigma, T, d1);
@@ -106,58 +115,54 @@ int main(int argc, char *argv[])
         auto C = Functions::computeC(S, K, r, q, T, d1, d2);
         auto P = Functions::computeP(S, K, r, q, T, d1, d2);
 
-        d1Label->setText(QString("d1: %1").arg(d1));
-        d2Label->setText(QString("d2: %1").arg(d2));
-        Nd1Label->setText(QString("N(d1): %1").arg(Nd1));
-        Nd2Label->setText(QString("N(d2): %1").arg(Nd2));
-        CLabel->setText(QString("Call: %1").arg(C));
-        PLabel->setText(QString("Put: %1").arg(P));
-
-        double minS = 0.5*K;
-        double maxS = 1.5*K;
+        double time, sample, price;
+        double minS = 0.5*K, maxS = 1.5*K;
+        double deltaT = (maxT - minT) / (SAMPLES - 1);
         double deltaS = (maxS - minS) / (SAMPLES - 1);
 
-        for (int i = 0; i < SAMPLES; i++) {
-            double sample = minS + i * deltaS;
-            double d1 = Functions::computeD1(sample, K, r, q, sigma, T);
-            double d2 = Functions::computeD2(sigma, T, d1);
-            double C = Functions::computeC(sample, K, r, q, T, d1, d2);
-            double P = Functions::computeP(S, K, r, q, T, d1, d2);
+        colorMap->data()->setSize(SAMPLES, SAMPLES);
+        colorMap->data()->setRange(QCPRange(minT, maxT), QCPRange(minS, maxS));
+        for (int i = 0; i < SAMPLES; ++i) {
+            time = minT + i * deltaT;
+            for (int j = 0; j < SAMPLES; ++j) {
+                sample = minS + j * deltaS;
+                d1 = Functions::computeD1(sample, K, r, q, sigma, time);
+                d2 = Functions::computeD2(sigma, time, d1);
+                C = Functions::computeC(sample, K, r, q, time, d1, d2);
+                P = Functions::computeP(sample, K, r, q, time, d1, d2);
 
-            plotX[i] = sample;
-            plotY0[i] = C;
-            plotY1[i] = P;
+                price = pushToggleCP->isChecked() ? P : C;
+                colorMap->data()->setCell(i, j, price);
+            }
         }
 
-        plot->graph(0)->setData(plotX, plotY0);
-        plot->graph(1)->setData(plotX, plotY1);
-        plot->rescaleAxes();
-        plot->yAxis->setPadding(10);
+        pushToggleCP->setText(pushToggleCP->isChecked() ? "Mode: Puts" : "Mode: Calls");
+        colorScale->axis()->setLabel(pushToggleCP->isChecked() ? "Put Price" : "Call Price");
+        colorMap->rescaleDataRange(true);
+        plot->xAxis->setRange(minT, maxT);
+        plot->yAxis->setRange(minS, maxS);
         plot->replot();
     };
 
     // Recompute on update
+    QObject::connect(pushToggleCP, &QPushButton::toggled, [&]{recompute();});
     QObject::connect(spinS, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
     QObject::connect(spinK, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
     QObject::connect(spinR, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
     QObject::connect(spinSigma, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
-    QObject::connect(spinT, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
+    QObject::connect(spinMinT, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
+    QObject::connect(spinMaxT, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
 
     // Layout
     auto *layout = new QVBoxLayout();
     layout->addWidget(plot);
+    layout->addWidget(pushToggleCP);
     layout->addWidget(spinS);
     layout->addWidget(spinK);
     layout->addWidget(spinR);
     layout->addWidget(spinSigma);
-    layout->addWidget(spinT);
-
-    // layout->addWidget(d1Label);
-    // layout->addWidget(d2Label);
-    // layout->addWidget(Nd1Label);
-    // layout->addWidget(Nd2Label);
-    // layout->addWidget(CLabel);
-    // layout->addWidget(PLabel);
+    layout->addWidget(spinMinT);
+    layout->addWidget(spinMaxT);
 
     w.setLayout(layout);
     recompute();
