@@ -1322,7 +1322,7 @@ C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/qcustomplot.h
  mdp:C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/moc_predefs.h
  mdp:C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/qcustomplot.h
 C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/functions.cpp
+C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/main.cpp
 C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/mainwindow.cpp
  uic:./ui_mainwindow.h
-C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/main.cpp
 C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/qcustomplot.cpp

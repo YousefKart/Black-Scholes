@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     spinR->setSingleStep(0.1);
     spinR->setValue(INIT_RISK_FREE_RATE);
     spinR->setPrefix("r = ");
-    spinR->setSuffix("%");
+    spinR->setSuffix(" %");
 
     // Volatility (Annual)
     auto *spinSigma = new QDoubleSpinBox();
@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
     spinMinT->setDecimals(2);
     spinMinT->setSingleStep(1);
     spinMinT->setValue(INIT_MIN_TIME_TO_EXPIRY);
-    spinMinT->setPrefix("T = ");
+    spinMinT->setPrefix("Min T = ");
     spinMinT->setSuffix(" Days");
 
     // Maximum Time to Expiry (Days)
@@ -95,8 +95,13 @@ int main(int argc, char *argv[])
     spinMaxT->setDecimals(2);
     spinMaxT->setSingleStep(1);
     spinMaxT->setValue(INIT_MAX_TIME_TO_EXPIRY);
-    spinMaxT->setPrefix("T = ");
+    spinMaxT->setPrefix("Max T = ");
     spinMaxT->setSuffix(" Days");
+
+    // Horizontal Layout
+    auto *rangeLayoutT = new QHBoxLayout();
+    rangeLayoutT->addWidget(spinMinT);
+    rangeLayoutT->addWidget(spinMaxT);
 
     auto recompute = [&]() {
         auto S = spinS->value();
@@ -161,8 +166,7 @@ int main(int argc, char *argv[])
     layout->addWidget(spinK);
     layout->addWidget(spinR);
     layout->addWidget(spinSigma);
-    layout->addWidget(spinMinT);
-    layout->addWidget(spinMaxT);
+    layout->addLayout(rangeLayoutT);
 
     w.setLayout(layout);
     recompute();
