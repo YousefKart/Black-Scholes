@@ -55,8 +55,6 @@ int main(int argc, char *argv[])
     // Plot
     auto *plot = new QCustomPlot();
     plot->addGraph();
-    plot->xAxis->setLabel("Years (T)");
-    plot->yAxis->setLabel("Stock Price (S)");
     plot->setMinimumHeight(300);
 
     // Color Map & Legend
@@ -147,21 +145,36 @@ int main(int argc, char *argv[])
         auto C = Functions::computeC(S, K, r, q, T, d1, d2);
         auto P = Functions::computeP(S, K, r, q, T, d1, d2);
 
-        double time, sample, price;
-        double minS = 0.5*K, maxS = 1.5*K;
-        double deltaT = (maxT - minT) / (SAMPLES - 1);
+        double tempS = S, minS = 0.5*K, maxS = 1.5*K;
         double deltaS = (maxS - minS) / (SAMPLES - 1);
+        double tempSigma = sigma, minSigma = 0.5*sigma, maxSigma = 1.5*sigma;
+        double deltaSigma = (maxSigma - minSigma) / (SAMPLES - 1);
+        double tempT = T;
+        double deltaT = (maxT - minT) / (SAMPLES - 1);
+
+        double price;
 
         colorMap->data()->setSize(SAMPLES, SAMPLES);
         colorMap->data()->setRange(QCPRange(minT, maxT), QCPRange(minS, maxS));
+
         for (int i = 0; i < SAMPLES; ++i) {
-            time = minT + i * deltaT;
+            switch (surfaceMode) {
+            case Surface::SurfaceMode::STP:
+                tempT = minT + i * deltaT;
+                break;
+            case Surface::SurfaceMode::SSP:
+                tempSigma = minSigma + i * deltaSigma;
+                break;
+            default:
+                break;
+            }
+
             for (int j = 0; j < SAMPLES; ++j) {
-                sample = minS + j * deltaS;
-                d1 = Functions::computeD1(sample, K, r, q, sigma, time);
-                d2 = Functions::computeD2(sigma, time, d1);
-                C = Functions::computeC(sample, K, r, q, time, d1, d2);
-                P = Functions::computeP(sample, K, r, q, time, d1, d2);
+                tempS = minS + j * deltaS;
+                d1 = Functions::computeD1(tempS, K, r, q, tempSigma, tempT);
+                d2 = Functions::computeD2(tempSigma, tempT, d1);
+                C = Functions::computeC(tempS, K, r, q, tempT, d1, d2);
+                P = Functions::computeP(tempS, K, r, q, tempT, d1, d2);
 
                 price = pushToggleCP->isChecked() ? P : C;
                 colorMap->data()->setCell(i, j, price);
@@ -171,6 +184,8 @@ int main(int argc, char *argv[])
         pushToggleCP->setText(pushToggleCP->isChecked() ? "Mode: Puts" : "Mode: Calls");
         colorScale->axis()->setLabel(pushToggleCP->isChecked() ? "Put Price" : "Call Price");
         colorMap->rescaleDataRange(true);
+        plot->xAxis->setLabel(surfaceMode == Surface::SurfaceMode::STP ? "Years (T)" : "Volatility (\u03C3)");
+        plot->yAxis->setLabel(surfaceMode == Surface::SurfaceMode::SMD ? "Delta" : "Stock Price (S)");
         plot->xAxis->setRange(minT, maxT);
         plot->yAxis->setRange(minS, maxS);
         plot->replot();

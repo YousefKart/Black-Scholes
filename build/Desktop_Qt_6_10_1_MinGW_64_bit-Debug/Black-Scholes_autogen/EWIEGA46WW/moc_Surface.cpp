@@ -41,7 +41,7 @@ template <> constexpr inline auto Surface::qt_create_metaobjectdata<qt_meta_tag_
         "Surface",
         "SurfaceMode",
         "STP",
-        "SMP",
+        "SSP",
         "SMD"
     };
 
@@ -53,7 +53,7 @@ template <> constexpr inline auto Surface::qt_create_metaobjectdata<qt_meta_tag_
         // enum 'SurfaceMode'
         QtMocHelpers::EnumData<enum SurfaceMode>(1, 1, QMC::EnumIsScoped).add({
             {    2, SurfaceMode::STP },
-            {    3, SurfaceMode::SMP },
+            {    3, SurfaceMode::SSP },
             {    4, SurfaceMode::SMD },
         }),
     };
