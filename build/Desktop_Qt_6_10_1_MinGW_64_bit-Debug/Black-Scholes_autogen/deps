@@ -10,6 +10,7 @@ Black-Scholes_autogen/timestamp: \
 	C:/Qt/6.10.1/mingw_64/include/QtCore/QList \
 	C:/Qt/6.10.1/mingw_64/include/QtCore/QMap \
 	C:/Qt/6.10.1/mingw_64/include/QtCore/QMargins \
+	C:/Qt/6.10.1/mingw_64/include/QtCore/QMetaEnum \
 	C:/Qt/6.10.1/mingw_64/include/QtCore/QMetaType \
 	C:/Qt/6.10.1/mingw_64/include/QtCore/QMultiMap \
 	C:/Qt/6.10.1/mingw_64/include/QtCore/QMutex \
@@ -1127,6 +1128,7 @@ Black-Scholes_autogen/timestamp: \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/CMakeLists.txt \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Surface.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/.qtc/package-manager/maintenance_tool_provider.cmake \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/moc_predefs.h \

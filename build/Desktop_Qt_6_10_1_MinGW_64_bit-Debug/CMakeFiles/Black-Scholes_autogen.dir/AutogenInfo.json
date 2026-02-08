@@ -326,6 +326,12 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Surface.h",
+			"MU",
+			"EWIEGA46WW/moc_Surface.cpp",
+			null
+		],
+		[
 			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/functions.h",
 			"MU",
 			"EWIEGA46WW/moc_functions.cpp",

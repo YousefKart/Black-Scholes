@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QMetaEnum>
 #include <QWidget>
 #include <QDoubleSpinBox>
 #include <QLabel>
@@ -6,6 +7,7 @@
 #include <cmath>
 #include "qcustomplot.h"
 #include "Functions.h"
+#include "Surface.h"
 
 #define INIT_STOCK_PRICE 100.0
 #define INIT_STRIKE_PRICE 110.0
@@ -18,11 +20,37 @@
 
 int main(int argc, char *argv[])
 {
+    Surface::SurfaceMode surfaceMode = Surface::SurfaceMode::STP;
+    QMetaEnum metaEnum = QMetaEnum::fromType<Surface::SurfaceMode>();
+
     QApplication a(argc, argv);
 
     QWidget w;
     w.setWindowTitle("Black Scholes Model");
     w.resize(600,400);
+
+    // Menu
+    // Menu Title
+    auto *menuTitle = new QLabel();
+    menuTitle->setText("Select Surface Mode");
+
+    auto *buttonSTP = new QPushButton();
+    buttonSTP->setCheckable(true);
+    buttonSTP->setText("(S,T) -> Price");
+    buttonSTP->setMinimumWidth(150);
+    buttonSTP->setMaximumWidth(150);
+    buttonSTP->setChecked(true);
+
+    auto *buttonSSP = new QPushButton();
+    buttonSSP->setCheckable(true);
+    buttonSSP->setText(QString::fromUtf8(u8"(S,\u03C3) -> Price"));
+    buttonSSP->setMinimumWidth(150);
+    buttonSSP->setMaximumWidth(150);
+
+    auto *buttonGroup = new QButtonGroup(&w);
+    buttonGroup->setExclusive(true);
+    buttonGroup->addButton(buttonSTP, static_cast<int>(Surface::SurfaceMode::STP));
+    buttonGroup->addButton(buttonSSP, static_cast<int>(Surface::SurfaceMode::SSP));
 
     // Plot
     auto *plot = new QCustomPlot();
@@ -45,7 +73,6 @@ int main(int argc, char *argv[])
     colorMap->setTightBoundary(true);
     plot->plotLayout()->setColumnStretchFactor(0,4);
     plot->plotLayout()->setColumnStretchFactor(1,1);
-
 
     // Display Type (Calls/Puts)
     auto *pushToggleCP = new QPushButton();
@@ -150,6 +177,7 @@ int main(int argc, char *argv[])
     };
 
     // Recompute on update
+    QObject::connect(buttonGroup, &QButtonGroup::idClicked, &w, [&](int id) {surfaceMode = static_cast<Surface::SurfaceMode>(id); recompute();});
     QObject::connect(pushToggleCP, &QPushButton::toggled, [&]{recompute();});
     QObject::connect(spinS, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
     QObject::connect(spinK, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
@@ -159,16 +187,27 @@ int main(int argc, char *argv[])
     QObject::connect(spinMaxT, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [&]{recompute();});
 
     // Layout
-    auto *layout = new QVBoxLayout();
-    layout->addWidget(plot);
-    layout->addWidget(pushToggleCP);
-    layout->addWidget(spinS);
-    layout->addWidget(spinK);
-    layout->addWidget(spinR);
-    layout->addWidget(spinSigma);
-    layout->addLayout(rangeLayoutT);
+    auto *leftLayout = new QVBoxLayout();
+    leftLayout->addWidget(menuTitle);
+    leftLayout->addWidget(buttonSTP);
+    leftLayout->addWidget(buttonSSP);
+    leftLayout->addStretch();
 
-    w.setLayout(layout);
+    auto *rightLayout = new QVBoxLayout();
+    rightLayout->addWidget(plot);
+    rightLayout->addWidget(pushToggleCP);
+    rightLayout->addWidget(spinS);
+    rightLayout->addWidget(spinK);
+    rightLayout->addWidget(spinR);
+    rightLayout->addWidget(spinSigma);
+    rightLayout->addLayout(rangeLayoutT);
+
+    auto *mainLayout = new QHBoxLayout();
+    mainLayout->addLayout(leftLayout);
+    mainLayout->addLayout(rightLayout);
+
+    // Run
+    w.setLayout(mainLayout);
     recompute();
     w.show();
 
