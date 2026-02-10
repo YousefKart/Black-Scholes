@@ -15,8 +15,28 @@ public:
         SSP, // (S,σ) -> Price
         SMD  // (S,σ) -> Delta
     };
-
     Q_ENUM(SurfaceMode);
+
+    enum InputType {
+        NONE, // Do not show
+        SINGLE, // Show constant value
+        RANGE // Show range between two values
+    };
+
+    struct Config {
+        double xValue;
+        double yValue;
+        double zValue;
+        QString xLabel;
+        QString yLabel;
+        QString zLabel;
+        InputType sInput = InputType::NONE;
+        InputType kInput = InputType::NONE;
+        InputType rInput = InputType::NONE;
+        InputType qInput = InputType::NONE;
+        InputType sigmaInput = InputType::NONE;
+        InputType tInput = InputType::NONE;
+    };
 };
 
 #endif // SURFACE_H

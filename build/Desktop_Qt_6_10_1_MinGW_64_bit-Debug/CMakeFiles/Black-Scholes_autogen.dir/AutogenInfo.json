@@ -326,15 +326,21 @@
 	"HEADERS" : 
 	[
 		[
-			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Surface.h",
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Component.h",
 			"MU",
-			"EWIEGA46WW/moc_Surface.cpp",
+			"EWIEGA46WW/moc_Component.cpp",
 			null
 		],
 		[
-			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/functions.h",
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Functions.h",
 			"MU",
-			"EWIEGA46WW/moc_functions.cpp",
+			"EWIEGA46WW/moc_Functions.cpp",
+			null
+		],
+		[
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Surface.h",
+			"MU",
+			"EWIEGA46WW/moc_Surface.cpp",
 			null
 		],
 		[
@@ -424,7 +430,12 @@
 	"SOURCES" : 
 	[
 		[
-			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/functions.cpp",
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Component.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Functions.cpp",
 			"MU",
 			null
 		],

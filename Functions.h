@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef FUNCTIONSS_H
+#define FUNCTIONSS_H
 
 class Functions
 {
@@ -14,4 +14,4 @@ public:
 
 };
 
-#endif // FUNCTIONS_H
+#endif // FUNCTIONSS_H
