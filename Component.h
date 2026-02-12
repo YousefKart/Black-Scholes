@@ -6,62 +6,72 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QPushButton>
-#include <cmath>
 #include "qcustomplot.h"
 
-#define INIT_STOCK_PRICE 100.0
-#define INIT_STRIKE_PRICE 110.0
-#define INIT_RISK_FREE_RATE 10.0
-#define INIT_VOLATILITY 0.2
-#define INIT_MIN_TIME_TO_EXPIRY 0.00
-#define INIT_MAX_TIME_TO_EXPIRY 365.0
-
-class Component
+class Component : public QWidget
 {
+    Q_OBJECT
 
 public:
-    Component();
-
-    // Window
-    QWidget window;
-
-    // Menu
-    QLabel *menuTitle;
-    QPushButton *buttonSTP;
-    QPushButton *buttonSSP;
-    QButtonGroup *buttonGroup;
+    explicit Component(QWidget* parent = nullptr);
 
     // Plot
-    QCustomPlot *plot;
+    QCustomPlot* plot() const { return m_plot; }
+    QCPColorMap* colorMap() const { return m_colorMap; }
+    QCPColorScale* colorScale() const { return m_colorScale; }
 
-    // Color Map & Legend
-    QCPColorMap *colorMap;
-    QCPColorScale *colorScale;
+    // Left-Hand Menu
+    QPushButton* toggleCP() const { return m_toggleCP; }
+    QButtonGroup* buttonGroup() const { return m_buttonGroup; }
+
+    // User-Input Variables
+    QDoubleSpinBox* spinS() const { return m_spinS; }
+    QDoubleSpinBox* spinK() const { return m_spinK; }
+    QDoubleSpinBox* spinR() const { return m_spinR; }
+    QDoubleSpinBox* spinSigma() const { return m_spinSigma; }
+    QDoubleSpinBox* spinMinT() const { return m_spinMinT; }
+    QDoubleSpinBox* spinMaxT() const { return m_spinMaxT; }
+
+
+private:
+    void setupUI();
+    void setupPlot();
+
+    // Left-Hand Menu
+    QLabel* m_menuTitle;
+    QPushButton* m_buttonSTP;
+    QPushButton* m_buttonSSP;
+    QButtonGroup* m_buttonGroup;
+
+    // Plot
+    QCustomPlot* m_plot;
+    QCPColorMap* m_colorMap;
+    QCPColorScale* m_colorScale;
 
     // Price Display Switch (Calls/Puts)
-    QPushButton *pushToggleCP;
+    QPushButton* m_toggleCP;
 
     // S Components
-    QDoubleSpinBox *spinS; // Stock Price
+    QDoubleSpinBox* m_spinS; // Stock Price
 
     // K Components
-    QDoubleSpinBox *spinK; // Strike Price
+    QDoubleSpinBox* m_spinK; // Strike Price
 
     // r Components
-    QDoubleSpinBox *spinR; // Risk-Free Rate (Annual)
+    QDoubleSpinBox* m_spinR; // Risk-Free Rate (Annual)
 
     // σ Components
-    QDoubleSpinBox *spinSigma; // Volatility (Annual)
+    QDoubleSpinBox* m_spinSigma; // Volatility (Annual)
 
     // T Components
-    QDoubleSpinBox *spinMinT; // Mininum Time to Expiry (Days)
-    QDoubleSpinBox *spinMaxT; // Maximum Time to Expiry (Days)
-    QHBoxLayout *rangeLayoutT;  // Horizontal Layout
+    QDoubleSpinBox* m_spinMinT; // Mininum Time to Expiry (Days)
+    QDoubleSpinBox* m_spinMaxT; // Maximum Time to Expiry (Days)
+    QHBoxLayout* m_rangeLayoutT;  // Horizontal Layout
 
     // Main Layout
-    QVBoxLayout *leftLayout;
-    QVBoxLayout *rightLayout;
-    QHBoxLayout *mainLayout;
+    QVBoxLayout* m_leftLayout;
+    QVBoxLayout* m_rightLayout;
+    QHBoxLayout* m_mainLayout;
 };
 
 #endif // COMPONENT_H

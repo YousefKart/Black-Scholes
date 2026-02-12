@@ -2,7 +2,6 @@
 #define SURFACE_H
 
 #include <QObject>
-#include <QMetaEnum>
 #include <QString>
 
 class Surface : public QObject
@@ -13,11 +12,10 @@ public:
     enum class SurfaceMode {
         STP, // (S,T) -> Price
         SSP, // (S,σ) -> Price
-        SMD  // (S,σ) -> Delta
+        SSD  // (S,σ) -> Delta
     };
-    Q_ENUM(SurfaceMode);
 
-    enum InputType {
+    enum class InputType {
         NONE, // Do not show
         SINGLE, // Show constant value
         RANGE // Show range between two values

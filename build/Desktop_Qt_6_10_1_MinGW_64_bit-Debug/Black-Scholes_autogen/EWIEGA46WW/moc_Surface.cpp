@@ -42,7 +42,11 @@ template <> constexpr inline auto Surface::qt_create_metaobjectdata<qt_meta_tag_
         "SurfaceMode",
         "STP",
         "SSP",
-        "SMD"
+        "SSD",
+        "InputType",
+        "NONE",
+        "SINGLE",
+        "RANGE"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -54,7 +58,13 @@ template <> constexpr inline auto Surface::qt_create_metaobjectdata<qt_meta_tag_
         QtMocHelpers::EnumData<enum SurfaceMode>(1, 1, QMC::EnumIsScoped).add({
             {    2, SurfaceMode::STP },
             {    3, SurfaceMode::SSP },
-            {    4, SurfaceMode::SMD },
+            {    4, SurfaceMode::SSD },
+        }),
+        // enum 'InputType'
+        QtMocHelpers::EnumData<enum InputType>(5, 5, QMC::EnumIsScoped).add({
+            {    6, InputType::NONE },
+            {    7, InputType::SINGLE },
+            {    8, InputType::RANGE },
         }),
     };
     return QtMocHelpers::metaObjectData<Surface, qt_meta_tag_ZN7SurfaceE_t>(QMC::MetaObjectFlag{}, qt_stringData,

@@ -458,9 +458,13 @@ Black-Scholes_autogen/timestamp: \
 	C:/Qt/6.10.1/mingw_64/include/QtPrintSupport/qtprintsupportglobal.h \
 	C:/Qt/6.10.1/mingw_64/include/QtPrintSupport/qtprintsupportversion.h \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QCommonStyle \
+	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QDoubleSpinBox \
+	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QLabel \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QLayout \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QMainWindow \
+	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QPushButton \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QScrollerProperties \
+	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QWidget \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QtWidgets \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QtWidgetsDepends \
@@ -1130,6 +1134,8 @@ Black-Scholes_autogen/timestamp: \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/CMakeLists.txt \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Component.cpp \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Component.h \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Compute.cpp \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Compute.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Functions.cpp \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Functions.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Surface.h \
