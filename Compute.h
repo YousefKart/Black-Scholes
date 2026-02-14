@@ -29,45 +29,45 @@ private:
     // User-Input Variables
     // Stock Price
     double S;
-    double minS;
-    double maxS;
-    double currentS;
-    double deltaS;
+    double min_S;
+    double max_S;
+    double current_S;
+    double delta_S;
 
     // Strike Price
     double K;
-    double minK;
-    double maxK;
-    double currentK;
-    double deltaK;
+    double min_K;
+    double max_K;
+    double current_K;
+    double delta_K;
 
     // Risk-Free Rate (Annual)
     double r;
-    double minr;
-    double maxr;
-    double currentr;
-    double deltar;
+    double min_r;
+    double max_r;
+    double current_r;
+    double delta_r;
 
     // Dividend Yields (Annual)
     double q;
-    double minq;
-    double maxq;
-    double currentq;
-    double deltaq;
+    double min_q;
+    double max_q;
+    double current_q;
+    double delta_q;
 
     // Volatility (Annual)
     double sigma;
-    double minSigma;
-    double maxSigma;
-    double currentSigma;
-    double deltaSigma;
+    double min_sigma;
+    double max_sigma;
+    double current_sigma;
+    double delta_sigma;
 
     // Time in Years
     double T;
-    double minT;
-    double maxT;
-    double currentT;
-    double deltaT;
+    double min_T;
+    double max_T;
+    double current_T;
+    double delta_T;
 
     // Computed variables
     double d1; // Result of computeD1

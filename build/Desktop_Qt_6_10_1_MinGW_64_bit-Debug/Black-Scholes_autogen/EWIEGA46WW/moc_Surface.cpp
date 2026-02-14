@@ -38,15 +38,7 @@ template <> constexpr inline auto Surface::qt_create_metaobjectdata<qt_meta_tag_
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "Surface",
-        "SurfaceMode",
-        "STP",
-        "SSP",
-        "SSD",
-        "InputType",
-        "NONE",
-        "SINGLE",
-        "RANGE"
+        "Surface"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -54,18 +46,6 @@ template <> constexpr inline auto Surface::qt_create_metaobjectdata<qt_meta_tag_
     QtMocHelpers::UintData qt_properties {
     };
     QtMocHelpers::UintData qt_enums {
-        // enum 'SurfaceMode'
-        QtMocHelpers::EnumData<enum SurfaceMode>(1, 1, QMC::EnumIsScoped).add({
-            {    2, SurfaceMode::STP },
-            {    3, SurfaceMode::SSP },
-            {    4, SurfaceMode::SSD },
-        }),
-        // enum 'InputType'
-        QtMocHelpers::EnumData<enum InputType>(5, 5, QMC::EnumIsScoped).add({
-            {    6, InputType::NONE },
-            {    7, InputType::SINGLE },
-            {    8, InputType::RANGE },
-        }),
     };
     return QtMocHelpers::metaObjectData<Surface, qt_meta_tag_ZN7SurfaceE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);

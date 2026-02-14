@@ -11,7 +11,6 @@ C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Q
   C:/Qt/6.10.1/mingw_64/include/QtCore/QList \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QMap \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QMargins \
-  C:/Qt/6.10.1/mingw_64/include/QtCore/QMetaEnum \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QMetaType \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QMultiMap \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QMutex \

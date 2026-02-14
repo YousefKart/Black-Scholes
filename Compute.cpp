@@ -4,39 +4,39 @@
 Compute::Compute(Component& ui) :
     ui(ui),
     surfaceMode(Surface::SurfaceMode::STP),
-    S(0), minS(0), maxS(0), currentS(0), deltaS(0),
-    K(0), minK(0), maxK(0), currentK(0), deltaK(0),
-    r(0), minr(0), maxr(0), currentr(0), deltar(0),
-    q(0), minq(0), maxq(0), currentq(0), deltaq(0),
-    sigma(0), minSigma(0), maxSigma(0), currentSigma(0), deltaSigma(0),
-    T(0), minT(0), maxT(0), currentT(0), deltaT(0),
+    S(0), min_S(0), max_S(0), current_S(0), delta_S(0),
+    K(0), min_K(0), max_K(0), current_K(0), delta_K(0),
+    r(0), min_r(0), max_r(0), current_r(0), delta_r(0),
+    q(0), min_q(0), max_q(0), current_q(0), delta_q(0),
+    sigma(0), min_sigma(0), max_sigma(0), current_sigma(0), delta_sigma(0),
+    T(0), min_T(0), max_T(0), current_T(0), delta_T(0),
     d1(0), d2(0), Nd1(0), Nd2(0), C(0), P(0), price(0)
 {
     // Recompute on update
     QObject::connect(ui.buttonGroup(), &QButtonGroup::idClicked, &ui, [this](int id) {surfaceMode = static_cast<Surface::SurfaceMode>(id); recompute();});
-    QObject::connect(ui.toggleCP(), &QPushButton::toggled, [this]{recompute();});
-    QObject::connect(ui.spinS(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
-    QObject::connect(ui.spinK(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
-    QObject::connect(ui.spinR(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
-    QObject::connect(ui.spinSigma(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
-    QObject::connect(ui.spinMinT(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
-    QObject::connect(ui.spinMaxT(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
+    QObject::connect(ui.toggle_CP(), &QPushButton::toggled, [this]{recompute();});
+    QObject::connect(ui.spin_S(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
+    QObject::connect(ui.spin_K(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
+    QObject::connect(ui.spin_r(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
+    QObject::connect(ui.spin_sigma(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
+    QObject::connect(ui.spinmin_T(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
+    QObject::connect(ui.spinmax_T(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
 
     recompute();
 }
 
 void Compute::recompute() {
-    Option mode = ui.toggleCP()->isChecked() ? Option::PUT : Option::CALL;
+    Option mode = ui.toggle_CP()->isChecked() ? Option::PUT : Option::CALL;
 
     // Variables
-    S = ui.spinS()->value();
-    K = ui.spinK()->value();
-    r = ui.spinR()->value() / 100.0; // Convert from % to 0.0-1.0 scale
+    S = ui.spin_S()->value();
+    K = ui.spin_K()->value();
+    r = ui.spin_r()->value() / 100.0; // Convert from % to 0.0-1.0 scale
     q = 0.0; // TODO: Add dividend yields
-    sigma = ui.spinSigma()->value();
-    minT = ui.spinMinT()->value() / 365.25; // Convert from days to years
-    maxT = ui.spinMaxT()->value() / 365.25; // Convert from days to years
-    T = maxT - minT;
+    sigma = ui.spin_sigma()->value();
+    min_T = ui.spinmin_T()->value() / 365.25; // Convert from days to years
+    max_T = ui.spinmax_T()->value() / 365.25; // Convert from days to years
+    T = max_T - min_T;
 
     // Functions
     d1 = Functions::computeD1(S, K, r, q, sigma, T);
@@ -47,64 +47,67 @@ void Compute::recompute() {
     P = Functions::computeP(S, K, r, q, T, d1, d2);
 
     // Change in Stock Price
-    currentS = S, minS = 0.5*S, maxS = 1.5*S;
-    deltaS = (maxS - minS) / (SAMPLES - 1);
+    current_S = S, min_S = 0.5*S, max_S = 1.5*S;
+    delta_S = (max_S - min_S) / (SAMPLES - 1);
 
     // Change in Strike Price
-    currentK = K, minK = 0.5*K, maxK = 1.5*K;
-    deltaK = (maxK - minK) / (SAMPLES - 1);
+    current_K = K, min_K = 0.5*K, max_K = 1.5*K;
+    delta_K = (max_K - min_K) / (SAMPLES - 1);
 
     // Change in Risk-Free Rate
-    currentr = r, minr = 0.5*r, maxr = 1.5*r;
-    deltar = (maxr - minr) / (SAMPLES - 1);
+    current_r = r, min_r = 0.5*r, max_r = 1.5*r;
+    delta_r = (max_r - min_r) / (SAMPLES - 1);
 
     // Change in Dividend Yields
-    currentq = q, minq = 0.5*q, maxq = 1.5*q;
-    deltaq = (maxq - minq) / (SAMPLES - 1);
+    current_q = q, min_q = 0.5*q, max_q = 1.5*q;
+    delta_q = (max_q - min_q) / (SAMPLES - 1);
 
     // Change in Volatility
-    currentSigma = sigma, minSigma = 0.5*sigma, maxSigma = 1.5*sigma;
-    deltaSigma = (maxSigma - minSigma) / (SAMPLES - 1);
+    current_sigma = sigma, min_sigma = 0.5*sigma, max_sigma = 1.5*sigma;
+    delta_sigma = (max_sigma - min_sigma) / (SAMPLES - 1);
 
     // Change in Time
-    currentT = T;
-    deltaT = (maxT - minT) / (SAMPLES - 1);
+    current_T = T;
+    delta_T = (max_T - min_T) / (SAMPLES - 1);
 
     QCPColorMapData *mapData = ui.colorMap()->data();
     mapData->setSize(SAMPLES, SAMPLES);
-    mapData->setRange(QCPRange(minT, maxT), QCPRange(minS, maxS));
+    mapData->setRange(QCPRange(min_T, max_T), QCPRange(min_S, max_S));
 
     auto computeOption = mode == Option::PUT ? Functions::computeP : Functions::computeC;
 
     for (int i = 0; i < SAMPLES; ++i) {
         switch (surfaceMode) {
         case Surface::SurfaceMode::STP:
-            currentT += deltaT;
+            current_T += delta_T;
             break;
         case Surface::SurfaceMode::SSP:
-            currentSigma += deltaSigma;
+            current_sigma += delta_sigma;
             break;
         default:
             break;
         }
 
-        for (int j = 0; j < SAMPLES; ++j) {
-            currentS = minS + j * deltaS;
-            d1 = Functions::computeD1(currentS, currentK, currentr, currentq, currentSigma, currentT);
-            d2 = Functions::computeD2(currentSigma, currentT, d1);
+        current_S = min_S;
 
-            price = computeOption(currentS, currentK, currentr, currentq, currentT, d1, d2);
+        for (int j = 0; j < SAMPLES; ++j) {
+            current_S += delta_S;
+
+            d1 = Functions::computeD1(current_S, current_K, current_r, current_q, current_sigma, current_T);
+            d2 = Functions::computeD2(current_sigma, current_T, d1);
+
+            price = computeOption(current_S, current_K, current_r, current_q, current_T, d1, d2);
             mapData->setCell(i, j, price);
         }
     }
 
-    ui.toggleCP()->setText(mode == Option::PUT ? "Mode: Puts" : "Mode: Calls");
+    ui.toggle_CP()->setText(mode == Option::PUT ? "Mode: Puts" : "Mode: Calls");
     ui.colorScale()->axis()->setLabel(mode == Option::PUT ? "Put Price" : "Call Price");
     ui.colorMap()->rescaleDataRange(true);
     ui.plot()->xAxis->setLabel(surfaceMode == Surface::SurfaceMode::STP ? "Years (T)" : "Volatility (\u03C3)");
     ui.plot()->yAxis->setLabel("Stock Price (S)");
-    ui.plot()->xAxis->setRange(minT, maxT);
-    ui.plot()->yAxis->setRange(minS, maxS);
+    ui.plot()->xAxis->setRange(min_T, max_T);
+    ui.plot()->yAxis->setRange(min_S, max_S);
     ui.plot()->replot();
 }
 
