@@ -2,8 +2,8 @@
 <p>An interactive desktop application for visualizing European-style option pricing using the Black-Scholes model.</p>
 <p>Built with C++17 and Qt 6, this tool allows real-time exploration of how option prices change with respect to stock price, volatility, time to expiry, and more.</p>
 
-<img width="702" height="536" alt="image" src="https://github.com/user-attachments/assets/af6f5e7e-20cb-4e7d-99df-e2329ed72ebd" />
-<img width="702" height="536" alt="image" src="https://github.com/user-attachments/assets/658a3da7-8f92-471e-9eb3-061fb046b567" />
+<img width="702" height="536" alt="image" src="https://github.com/user-attachments/assets/75cd363c-7796-49cb-931d-98c9da9e7b30" />
+<img width="702" height="536" alt="image" src="https://github.com/user-attachments/assets/5fcc4e82-fd35-42fc-a051-73b4e7a091c9" />
 
 <hr>
 
@@ -99,12 +99,12 @@ cmake --build .
 
 <h2>Roadmap</h2>
 
+- [x] Create heat map
 - [x] Add <code>(S,T) -> Price</code> Surface
 - [x] Add <code>(S,σ) -> Price</code> Surface
-- [ ] Add <code>(S,σ) -> Delta</code> Surface
 - [ ] Add <code>Gamma</code> Surfaces
 - [ ] Add Implied Volatility Solver
-- [ ] GPU Acceleration (OpenGL Surface)
+- [ ] Create 3D plot (OpenGL Surface)
 - [ ] Export Surface as Image
 
 <hr>
