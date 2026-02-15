@@ -19,7 +19,7 @@
     <li><code>(S,σ) -> Delta</code> (Coming soon)</li>
   </ul>
   </li>
-  <li>Ckean MVC-style separation:
+  <li>Clean MVC-style separation:
   <ul>
     <li><code>Component.cpp</code> -> UI Layer</li>
     <li><code>Compute.cpp</code> -> Pricing Engine</li>
