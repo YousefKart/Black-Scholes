@@ -326,15 +326,15 @@
 	"HEADERS" : 
 	[
 		[
-			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Compute.h",
-			"MU",
-			"EWIEGA46WW/moc_Compute.cpp",
-			null
-		],
-		[
 			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/component.h",
 			"MU",
 			"EWIEGA46WW/moc_component.cpp",
+			null
+		],
+		[
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/compute.h",
+			"MU",
+			"EWIEGA46WW/moc_compute.cpp",
 			null
 		],
 		[

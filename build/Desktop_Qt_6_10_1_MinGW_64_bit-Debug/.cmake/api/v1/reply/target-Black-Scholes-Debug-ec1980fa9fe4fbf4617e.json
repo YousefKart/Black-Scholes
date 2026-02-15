@@ -681,7 +681,7 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Compute.h",
+			"path" : "compute.h",
 			"sourceGroupIndex" : 1
 		},
 		{
