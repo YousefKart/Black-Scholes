@@ -20,7 +20,8 @@ Component::Component(QWidget* parent) : QWidget(parent)
 void Component::setupUI() {
 
     // Left-Hand Menu
-    m_menuTitle = new QLabel("Select Surface Mode", this);
+    m_menuTitle = new QLabel("Surface Mode", this);
+    m_menuTitle->setAlignment(Qt::AlignCenter);
 
     m_button_STP = new QPushButton("(S,T) -> Price", this);
     m_button_STP->setCheckable(true);
