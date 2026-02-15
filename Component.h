@@ -15,6 +15,26 @@ class Component : public QWidget
 public:
     explicit Component(QWidget* parent = nullptr);
 
+    static constexpr int SLIDER_RESOLUTION = 1000;
+    static constexpr double minValue_S = 0.01;
+    static constexpr double maxValue_S = 1000000.0;
+    static constexpr double minValue_K = 0.01;
+    static constexpr double maxValue_K = 1000000.0;
+    static constexpr double minValue_r = 0.0;
+    static constexpr double maxValue_r = 100.0;
+    static constexpr double minValue_q = 0.0; // Not defined yet
+    static constexpr double maxValue_q = 0.0; // Not defined yet
+    static constexpr double minValue_sigma = 0.0001;
+    static constexpr double maxValue_sigma = 5.0;
+    static constexpr double minValue_T = 0.0001;
+    static constexpr double maxValue_T = 10000.0;
+
+    // Convert from spin to slider or vice versa
+    static int spinToSliderLinear(double stepVal, double min, double max, int steps);
+    static int spinToSliderLog(double stepVal, double min, double max, int steps);
+    static double sliderToSpinLinear(int sliderVal, double min, double max, int steps);
+    static double sliderToSpinLog(int sliderVal, double min, double max, int steps);
+
     // Plot
     QCustomPlot* plot() const { return m_plot; }
     QCPColorMap* colorMap() const { return m_colorMap; }
@@ -25,9 +45,13 @@ public:
     QButtonGroup* buttonGroup() const { return m_buttonGroup; }
 
     // User-Input Variables
+    QSlider* slider_S() const { return m_slider_S; }
     QDoubleSpinBox* spin_S() const { return m_spin_S; }
+    QSlider* slider_K() const { return m_slider_K; }
     QDoubleSpinBox* spin_K() const { return m_spin_K; }
+    QSlider* slider_r() const { return m_slider_r; }
     QDoubleSpinBox* spin_r() const { return m_spin_r; }
+    QSlider* slider_sigma() const { return m_slider_sigma; }
     QDoubleSpinBox* spin_sigma() const { return m_spin_sigma; }
     QDoubleSpinBox* spinmin_T() const { return m_spinmin_T; }
     QDoubleSpinBox* spinmax_T() const { return m_spinmax_T; }

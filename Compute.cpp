@@ -15,10 +15,12 @@ Compute::Compute(Component& ui) :
     // Recompute on update
     QObject::connect(ui.buttonGroup(), &QButtonGroup::idClicked, &ui, [this](int id) {surfaceMode = static_cast<Surface::SurfaceMode>(id); recompute();});
     QObject::connect(ui.toggle_CP(), &QPushButton::toggled, [this]{recompute();});
-    QObject::connect(ui.spin_S(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
-    QObject::connect(ui.spin_K(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
-    QObject::connect(ui.spin_r(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
-    QObject::connect(ui.spin_sigma(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
+
+    bindLog(ui.slider_S(), ui.spin_S(), Component::minValue_S, Component::maxValue_S);
+    bindLog(ui.slider_K(), ui.spin_K(), Component::minValue_K, Component::maxValue_K);
+    bindLinear(ui.slider_r(), ui.spin_r(), Component::minValue_r, Component::maxValue_r);
+    bindLinear(ui.slider_sigma(), ui.spin_sigma(), Component::minValue_sigma, Component::maxValue_sigma);
+
     QObject::connect(ui.spinmin_T(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
     QObject::connect(ui.spinmax_T(), QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]{recompute();});
 
@@ -111,3 +113,34 @@ void Compute::recompute() {
     ui.plot()->replot();
 }
 
+void Compute::bindLinear(QSlider* slider, QDoubleSpinBox* spin, double min, double max) {
+    QObject::connect(slider, &QSlider::valueChanged, this, [this, slider, spin, min, max](int value) {
+        spin->blockSignals(true);
+        spin->setValue(Component::sliderToSpinLinear(value, min, max, Component::SLIDER_RESOLUTION));
+        spin->blockSignals(false);
+        recompute();
+    });
+
+    QObject::connect(spin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this, slider, spin, min, max](double value){
+        slider->blockSignals(true);
+        slider->setValue(Component::spinToSliderLinear(value, min, max, Component::SLIDER_RESOLUTION));
+        slider->blockSignals(false);
+        recompute();
+    });
+}
+
+void Compute::bindLog(QSlider* slider, QDoubleSpinBox* spin, double min, double max) {
+    QObject::connect(slider, &QSlider::valueChanged, this, [this, slider, spin, min, max](int value) {
+        spin->blockSignals(true);
+        spin->setValue(Component::sliderToSpinLog(value, min, max, Component::SLIDER_RESOLUTION));
+        spin->blockSignals(false);
+        recompute();
+    });
+
+    QObject::connect(spin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this, slider, spin, min, max](double value){
+        slider->blockSignals(true);
+        slider->setValue(Component::spinToSliderLog(value, min, max, Component::SLIDER_RESOLUTION));
+        slider->blockSignals(false);
+        recompute();
+    });
+}

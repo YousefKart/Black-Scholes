@@ -21,12 +21,12 @@ private:
     static constexpr int SAMPLES = 200;
 
     void recompute();
+    void bindLinear(QSlider* slider, QDoubleSpinBox* spin, double min, double max);
+    void bindLog(QSlider* slider, QDoubleSpinBox* spin, double min, double max);
 
     Component& ui;
     Surface::SurfaceMode surfaceMode;
 
-
-    // User-Input Variables
     // Stock Price
     double S;
     double min_S;

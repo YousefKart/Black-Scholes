@@ -10,6 +10,7 @@ constexpr double INIT_MAX_TIME_TO_EXPIRY = 365.0;
 
 Component::Component(QWidget* parent) : QWidget(parent)
 {
+
     setupPlot(); // Must be called before setupUI()
     setupUI();
 
@@ -43,11 +44,13 @@ void Component::setupUI() {
 
     // Stock Price
     m_slider_S = new QSlider(Qt::Horizontal, this);
-    m_slider_S->setRange(0, 200);
-    m_slider_S->setValue(20);
+    m_slider_S->setRange(0, SLIDER_RESOLUTION);
+    m_slider_S->setValue(spinToSliderLog(INIT_STOCK_PRICE, minValue_S, maxValue_S, SLIDER_RESOLUTION));
 
     m_spin_S = new QDoubleSpinBox(this);
-    m_spin_S->setRange(0.01, 1000000.0);
+    m_spin_S->setRange(minValue_S, maxValue_S);
+    m_spin_S->setDecimals(2);
+    m_spin_S->setSingleStep(0.01);
     m_spin_S->setValue(INIT_STOCK_PRICE);
     m_spin_S->setPrefix("S = ");
     m_spin_S->setMinimumWidth(150);
@@ -59,11 +62,13 @@ void Component::setupUI() {
 
     // Strike Price
     m_slider_K = new QSlider(Qt::Horizontal, this);
-    m_slider_K->setRange(0,200);
-    m_slider_K->setValue(20);
+    m_slider_K->setRange(0,SLIDER_RESOLUTION);
+    m_slider_K->setValue(spinToSliderLog(INIT_STRIKE_PRICE, minValue_K, maxValue_K, SLIDER_RESOLUTION));
 
     m_spin_K = new QDoubleSpinBox(this);
-    m_spin_K->setRange(0.01, 1000000.0);
+    m_spin_K->setRange(minValue_K, maxValue_K);
+    m_spin_K->setDecimals(2);
+    m_spin_K->setSingleStep(0.01);
     m_spin_K->setValue(INIT_STRIKE_PRICE);
     m_spin_K->setPrefix("K = ");
     m_spin_K->setMinimumWidth(150);
@@ -75,11 +80,11 @@ void Component::setupUI() {
 
     // Risk-Free Rate (Annual)
     m_slider_r = new QSlider(Qt::Horizontal, this);
-    m_slider_r->setRange(0, 200);
-    m_slider_r->setValue(20);
+    m_slider_r->setRange(0, SLIDER_RESOLUTION);
+    m_slider_r->setValue(spinToSliderLinear(INIT_RISK_FREE_RATE, minValue_r, maxValue_r, SLIDER_RESOLUTION));
 
     m_spin_r = new QDoubleSpinBox(this);
-    m_spin_r->setRange(0.0,100.0);
+    m_spin_r->setRange(minValue_r, maxValue_r);
     m_spin_r->setDecimals(2);
     m_spin_r->setSingleStep(0.1);
     m_spin_r->setValue(INIT_RISK_FREE_RATE);
@@ -94,11 +99,11 @@ void Component::setupUI() {
 
     // Volatility (Annual)
     m_slider_sigma = new QSlider(Qt::Horizontal, this);
-    m_slider_sigma->setRange(0, 200);
-    m_slider_sigma->setValue(20);
+    m_slider_sigma->setRange(0, SLIDER_RESOLUTION);
+    m_slider_sigma->setValue(spinToSliderLinear(INIT_VOLATILITY, minValue_sigma, maxValue_sigma, SLIDER_RESOLUTION));
 
     m_spin_sigma = new QDoubleSpinBox(this);
-    m_spin_sigma->setRange(0.0001, 5.0);
+    m_spin_sigma->setRange(minValue_sigma, maxValue_sigma);
     m_spin_sigma->setDecimals(4);
     m_spin_sigma->setSingleStep(0.01);
     m_spin_sigma->setValue(INIT_VOLATILITY);
@@ -112,20 +117,20 @@ void Component::setupUI() {
 
     // min_inum Time to Expiry (Days)
     m_spinmin_T = new QDoubleSpinBox(this);
-    m_spinmin_T->setRange(0.0001, 10000.0);
+    m_spinmin_T->setRange(minValue_T, maxValue_T);
     m_spinmin_T->setDecimals(2);
     m_spinmin_T->setSingleStep(1);
     m_spinmin_T->setValue(INIT_MIN_TIME_TO_EXPIRY);
-    m_spinmin_T->setPrefix("min_ T = ");
+    m_spinmin_T->setPrefix("min T = ");
     m_spinmin_T->setSuffix(" Days");
 
     // max_imum Time to Expiry (Days)
     m_spinmax_T = new QDoubleSpinBox(this);
-    m_spinmax_T->setRange(0.0001, 10000.0);
+    m_spinmax_T->setRange(minValue_T, maxValue_T);
     m_spinmax_T->setDecimals(2);
     m_spinmax_T->setSingleStep(1);
     m_spinmax_T->setValue(INIT_MAX_TIME_TO_EXPIRY);
-    m_spinmax_T->setPrefix("max_ T = ");
+    m_spinmax_T->setPrefix("max T = ");
     m_spinmax_T->setSuffix(" Days");
 
     // Time Layout
@@ -178,4 +183,30 @@ void Component::setupPlot() {
 
     m_plot->plotLayout()->setColumnStretchFactor(0,4);
     m_plot->plotLayout()->setColumnStretchFactor(1,1);
+}
+
+int Component::spinToSliderLinear(double stepVal, double min, double max, int steps) {
+    double ratio = (stepVal - min) / (max - min);
+    return static_cast<int>(ratio * steps + 0.5); // +0.5 to fix off by 1 error
+}
+
+int Component::spinToSliderLog(double stepVal, double min, double max, int steps) {
+    double logMin = std::log10(min);
+    double logMax = std::log10(max);
+    double logVal = std::log10(stepVal);
+    double ratio = (logVal - logMin) / (logMax - logMin);
+    return static_cast<int>(ratio * steps + 0.5); // +0.5 to fix off by 1 error
+}
+
+double Component::sliderToSpinLinear(int sliderVal, double min, double max, int steps) {
+    double ratio = static_cast<double>(sliderVal) / steps;
+    return min + ratio * (max - min);
+}
+
+double Component::sliderToSpinLog(int sliderVal, double min, double max, int steps) {
+    double ratio = static_cast<double>(sliderVal) / steps;
+    double logMin = std::log10(min);
+    double logMax = std::log10(max);
+    double logVal = logMin + ratio * (logMax - logMin);
+    return std::pow(10.0, logVal);
 }
