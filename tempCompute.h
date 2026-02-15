@@ -1,9 +1,9 @@
-#ifndef COMPUTE_H
-#define COMPUTE_H
+#ifndef COMPUTEE_H
+#define COMPUTEE_H
 
 #include <QObject>
-#include "Component.h"
-#include "Surface.h"
+#include "component.h"
+#include "surface.h"
 
 class Compute : public QObject
 {
@@ -79,4 +79,4 @@ private:
     double price; // Selected Price (Either C or P)
 };
 
-#endif // COMPUTE_H
+#endif // COMPUTEE_H

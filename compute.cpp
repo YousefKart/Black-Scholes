@@ -1,5 +1,5 @@
-#include "Compute.h"
-#include "Functions.h"
+#include "compute.h"
+#include "functions.h"
 
 Compute::Compute(Component& ui) :
     ui(ui),

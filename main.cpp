@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <cmath>
-#include "Component.h"
-#include "Compute.h"
+#include "component.h"
+#include "compute.h"
 
 #define SAMPLES 200
 

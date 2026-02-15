@@ -1,4 +1,4 @@
-#include "Functions.h"
+#include "functions.h"
 #include <cmath>
 
 Functions::Functions() {}

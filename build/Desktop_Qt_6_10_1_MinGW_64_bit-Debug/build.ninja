@@ -81,25 +81,25 @@ build CMakeFiles/Black-Scholes.dir/qcustomplot.cpp.obj: CXX_COMPILER__Black-Scho
   OBJECT_DIR = CMakeFiles\Black-Scholes.dir
   OBJECT_FILE_DIR = CMakeFiles\Black-Scholes.dir
 
-build CMakeFiles/Black-Scholes.dir/Component.cpp.obj: CXX_COMPILER__Black-Scholes_unscanned_Debug C$:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Component.cpp || cmake_object_order_depends_target_Black-Scholes
+build CMakeFiles/Black-Scholes.dir/component.cpp.obj: CXX_COMPILER__Black-Scholes_unscanned_Debug C$:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/component.cpp || cmake_object_order_depends_target_Black-Scholes
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
-  DEP_FILE = CMakeFiles\Black-Scholes.dir\Component.cpp.obj.d
+  DEP_FILE = CMakeFiles\Black-Scholes.dir\component.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always -Wa,-mbig-obj
   INCLUDES = -IC:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/include -isystem C:/Qt/6.10.1/mingw_64/include/QtCore -isystem C:/Qt/6.10.1/mingw_64/include -isystem C:/Qt/6.10.1/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.10.1/mingw_64/include/QtWidgets -isystem C:/Qt/6.10.1/mingw_64/include/QtGui -isystem C:/Qt/6.10.1/mingw_64/include/QtPrintSupport
   OBJECT_DIR = CMakeFiles\Black-Scholes.dir
   OBJECT_FILE_DIR = CMakeFiles\Black-Scholes.dir
 
-build CMakeFiles/Black-Scholes.dir/Functions.cpp.obj: CXX_COMPILER__Black-Scholes_unscanned_Debug C$:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Functions.cpp || cmake_object_order_depends_target_Black-Scholes
+build CMakeFiles/Black-Scholes.dir/functions.cpp.obj: CXX_COMPILER__Black-Scholes_unscanned_Debug C$:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/functions.cpp || cmake_object_order_depends_target_Black-Scholes
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
-  DEP_FILE = CMakeFiles\Black-Scholes.dir\Functions.cpp.obj.d
+  DEP_FILE = CMakeFiles\Black-Scholes.dir\functions.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always -Wa,-mbig-obj
   INCLUDES = -IC:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/include -isystem C:/Qt/6.10.1/mingw_64/include/QtCore -isystem C:/Qt/6.10.1/mingw_64/include -isystem C:/Qt/6.10.1/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.10.1/mingw_64/include/QtWidgets -isystem C:/Qt/6.10.1/mingw_64/include/QtGui -isystem C:/Qt/6.10.1/mingw_64/include/QtPrintSupport
   OBJECT_DIR = CMakeFiles\Black-Scholes.dir
   OBJECT_FILE_DIR = CMakeFiles\Black-Scholes.dir
 
-build CMakeFiles/Black-Scholes.dir/Compute.cpp.obj: CXX_COMPILER__Black-Scholes_unscanned_Debug C$:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Compute.cpp || cmake_object_order_depends_target_Black-Scholes
+build CMakeFiles/Black-Scholes.dir/compute.cpp.obj: CXX_COMPILER__Black-Scholes_unscanned_Debug C$:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/compute.cpp || cmake_object_order_depends_target_Black-Scholes
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
-  DEP_FILE = CMakeFiles\Black-Scholes.dir\Compute.cpp.obj.d
+  DEP_FILE = CMakeFiles\Black-Scholes.dir\compute.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always -Wa,-mbig-obj
   INCLUDES = -IC:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/include -isystem C:/Qt/6.10.1/mingw_64/include/QtCore -isystem C:/Qt/6.10.1/mingw_64/include -isystem C:/Qt/6.10.1/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.10.1/mingw_64/include/QtWidgets -isystem C:/Qt/6.10.1/mingw_64/include/QtGui -isystem C:/Qt/6.10.1/mingw_64/include/QtPrintSupport
   OBJECT_DIR = CMakeFiles\Black-Scholes.dir
@@ -113,7 +113,7 @@ build CMakeFiles/Black-Scholes.dir/Compute.cpp.obj: CXX_COMPILER__Black-Scholes_
 #############################################
 # Link the executable Black-Scholes.exe
 
-build Black-Scholes.exe: CXX_EXECUTABLE_LINKER__Black-Scholes_Debug CMakeFiles/Black-Scholes.dir/Black-Scholes_autogen/mocs_compilation.cpp.obj CMakeFiles/Black-Scholes.dir/main.cpp.obj CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj CMakeFiles/Black-Scholes.dir/qcustomplot.cpp.obj CMakeFiles/Black-Scholes.dir/Component.cpp.obj CMakeFiles/Black-Scholes.dir/Functions.cpp.obj CMakeFiles/Black-Scholes.dir/Compute.cpp.obj | C$:/Qt/6.10.1/mingw_64/lib/libQt6PrintSupport.a C$:/Qt/6.10.1/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.10.1/mingw_64/lib/libQt6Gui.a C$:/Qt/6.10.1/mingw_64/lib/libQt6Core.a C$:/Qt/6.10.1/mingw_64/lib/libQt6EntryPoint.a || Black-Scholes_autogen Black-Scholes_autogen_timestamp_deps
+build Black-Scholes.exe: CXX_EXECUTABLE_LINKER__Black-Scholes_Debug CMakeFiles/Black-Scholes.dir/Black-Scholes_autogen/mocs_compilation.cpp.obj CMakeFiles/Black-Scholes.dir/main.cpp.obj CMakeFiles/Black-Scholes.dir/mainwindow.cpp.obj CMakeFiles/Black-Scholes.dir/qcustomplot.cpp.obj CMakeFiles/Black-Scholes.dir/component.cpp.obj CMakeFiles/Black-Scholes.dir/functions.cpp.obj CMakeFiles/Black-Scholes.dir/compute.cpp.obj | C$:/Qt/6.10.1/mingw_64/lib/libQt6PrintSupport.a C$:/Qt/6.10.1/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.10.1/mingw_64/lib/libQt6Gui.a C$:/Qt/6.10.1/mingw_64/lib/libQt6Core.a C$:/Qt/6.10.1/mingw_64/lib/libQt6EntryPoint.a || Black-Scholes_autogen Black-Scholes_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = C:/Qt/6.10.1/mingw_64/lib/libQt6PrintSupport.a  C:/Qt/6.10.1/mingw_64/lib/libQt6Widgets.a  C:/Qt/6.10.1/mingw_64/lib/libQt6Gui.a  C:/Qt/6.10.1/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  C:/Qt/6.10.1/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lcomdlg32  -lwinspool  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

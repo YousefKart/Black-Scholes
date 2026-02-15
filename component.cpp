@@ -1,5 +1,5 @@
-#include "Component.h"
-#include "Surface.h"
+#include "component.h"
+#include "surface.h"
 
 constexpr double INIT_STOCK_PRICE = 100.0;
 constexpr double INIT_STRIKE_PRICE = 110.0;
