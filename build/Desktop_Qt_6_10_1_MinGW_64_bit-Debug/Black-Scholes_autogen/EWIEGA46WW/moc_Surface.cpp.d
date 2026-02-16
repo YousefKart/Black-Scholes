@@ -1,4 +1,4 @@
-C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/EWIEGA46WW/moc_Surface.cpp: C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Surface.h \
+C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/EWIEGA46WW/moc_surface.cpp: C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/surface.h \
   C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/moc_predefs.h \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QObject \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QString \

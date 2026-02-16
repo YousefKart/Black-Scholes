@@ -17,14 +17,14 @@ double Functions::computeN(double x) {
     return 0.5 * std::erfc(-x / std::sqrt(2));
 }
 
-double Functions::computeC(double S, double K, double r, double q, double T, double d1, double d2) {
+double Functions::computeCall(double S, double K, double r, double q, double T, double d1, double d2) {
     const double F = S * std::exp((r-q)*T);
     auto Nd1 = computeN(d1);
     auto Nd2 = computeN(d2);
     return std::exp(-r*T) * (F*Nd1 - K*Nd2);
 }
 
-double Functions::computeP(double S, double K, double r, double q, double T, double d1, double d2) {
+double Functions::computePut(double S, double K, double r, double q, double T, double d1, double d2) {
     const double F = S * std::exp((r-q)*T);
     auto Nd1 = computeN(-d1);
     auto Nd2 = computeN(-d2);

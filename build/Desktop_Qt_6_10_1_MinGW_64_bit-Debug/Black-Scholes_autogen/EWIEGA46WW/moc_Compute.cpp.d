@@ -1,4 +1,4 @@
-C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/EWIEGA46WW/moc_Compute.cpp: C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Compute.h \
+C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/EWIEGA46WW/moc_compute.cpp: C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/compute.h \
   C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/moc_predefs.h \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QCache \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QDateTime \
@@ -463,6 +463,7 @@ C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Q
   C:/Qt/6.10.1/mingw_64/include/QtWidgets/QLayout \
   C:/Qt/6.10.1/mingw_64/include/QtWidgets/QPushButton \
   C:/Qt/6.10.1/mingw_64/include/QtWidgets/QScrollerProperties \
+  C:/Qt/6.10.1/mingw_64/include/QtWidgets/QSlider \
   C:/Qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
   C:/Qt/6.10.1/mingw_64/include/QtWidgets/QWidget \
   C:/Qt/6.10.1/mingw_64/include/QtWidgets/QtWidgets \
@@ -943,6 +944,7 @@ C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Q
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
-  C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Component.h \
-  C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Surface.h \
-  C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/qcustomplot.h
+  C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/component.h \
+  C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/qcustomplot.h \
+  C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/rangeslider.h \
+  C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/surface.h

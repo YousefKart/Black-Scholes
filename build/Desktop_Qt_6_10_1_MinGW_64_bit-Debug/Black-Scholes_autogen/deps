@@ -463,6 +463,7 @@ Black-Scholes_autogen/timestamp: \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QMainWindow \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QPushButton \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QScrollerProperties \
+	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QSlider \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QVBoxLayout \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QWidget \
 	C:/Qt/6.10.1/mingw_64/include/QtWidgets/QtWidgets \
@@ -1131,23 +1132,26 @@ Black-Scholes_autogen/timestamp: \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/CMakeLists.txt \
-	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Component.cpp \
-	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Component.h \
-	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Compute.cpp \
-	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Compute.h \
-	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Functions.cpp \
-	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Functions.h \
-	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/Surface.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/.qtc/package-manager/maintenance_tool_provider.cmake \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/Black-Scholes_autogen/moc_predefs.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/component.cpp \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/component.h \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/compute.cpp \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/compute.h \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/functions.cpp \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/functions.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/main.cpp \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/mainwindow.cpp \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/mainwindow.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/qcustomplot.cpp \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/qcustomplot.h \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/rangeslider.cpp \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/rangeslider.h \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/surface.cpp \
+	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/surface.h \
 	C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/mainwindow.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

@@ -356,6 +356,12 @@
 			null
 		],
 		[
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/rangeslider.h",
+			"MU",
+			"EWIEGA46WW/moc_rangeslider.cpp",
+			null
+		],
+		[
 			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/surface.h",
 			"MU",
 			"EWIEGA46WW/moc_surface.cpp",
@@ -462,6 +468,16 @@
 		],
 		[
 			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/qcustomplot.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/rangeslider.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Brose/Documents/.Code/CPP/Qt/BlackScholes/Black-Scholes/surface.cpp",
 			"MU",
 			null
 		]

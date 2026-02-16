@@ -21,8 +21,9 @@ private:
     static constexpr int SAMPLES = 200;
 
     void recompute();
-    void bindLinear(QSlider* slider, QDoubleSpinBox* spin, double min, double max);
-    void bindLog(QSlider* slider, QDoubleSpinBox* spin, double min, double max);
+    void setUI(Surface::SurfaceConfig config); // Updates active UI
+    void bindLinear(QSlider* slider, QDoubleSpinBox* spin, double min, double max); // Binds a slider to a spin box linearly
+    void bindLog(QSlider* slider, QDoubleSpinBox* spin, double min, double max); // Binds a slider to a spin box logarithmically
 
     Component& ui;
     Surface::SurfaceMode surfaceMode;

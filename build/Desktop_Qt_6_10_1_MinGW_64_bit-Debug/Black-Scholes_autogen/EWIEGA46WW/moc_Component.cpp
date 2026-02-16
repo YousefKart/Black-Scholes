@@ -1,12 +1,12 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'Component.h'
+** Meta object code from reading C++ file 'component.h'
 **
 ** Created by: The Qt Meta Object Compiler version 69 (Qt 6.10.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../../Component.h"
+#include "../../../../component.h"
 #include <QtGui/qtextcursor.h>
 #include <QtGui/qscreen.h>
 #include <QtCore/qmetatype.h>
@@ -18,7 +18,7 @@
 
 #include <QtCore/qxptype_traits.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'Component.h' doesn't include <QObject>."
+#error "The header file 'component.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 69
 #error "This file was generated using the moc from 6.10.1. It"
 #error "cannot be used with the include files from this version of Qt."
