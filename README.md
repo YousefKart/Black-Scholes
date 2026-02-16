@@ -99,10 +99,11 @@ cmake --build .
 
 <h2>Roadmap</h2>
 
+- [x] Connect input fields
 - [x] Create heat map
-- [x] Add <code>(S,T) -> Price</code> Surface
-- [x] Add <code>(S,σ) -> Price</code> Surface
-- [ ] Add <code>Gamma</code> Surfaces
+- [x] Add Price Surfaces
+- [ ] Add Gamma Surfaces
+- [x] Optimize for smooth sliders
 - [ ] Add Implied Volatility Solver
 - [ ] Create 3D plot (OpenGL Surface)
 - [ ] Export Surface as Image
