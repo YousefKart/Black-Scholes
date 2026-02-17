@@ -95,22 +95,6 @@ void Component::setupUI() {
     m_rangeSlider_S->setLowerValue(spinToSliderLog(INIT_MIN_STOCK_PRICE, minLimit_S, maxLimit_S, SLIDER_RESOLUTION));
     m_rangeSlider_S->setUpperValue(spinToSliderLog(INIT_MAX_STOCK_PRICE, minLimit_S, maxLimit_S, SLIDER_RESOLUTION));
 
-    qDebug() << "Slider raw:" << m_rangeSlider_S->lowerValue()
-             << "Mapped value:"
-             << sliderToSpinLog(m_rangeSlider_S->lowerValue(),
-                                minLimit_S,
-                                maxLimit_S,
-                                SLIDER_RESOLUTION);
-
-    qDebug() << "Slider raw:" << m_rangeSlider_S->upperValue()
-             << "Mapped value:"
-             << sliderToSpinLog(m_rangeSlider_S->upperValue(),
-                                minLimit_S,
-                                maxLimit_S,
-                                SLIDER_RESOLUTION);
-
-
-
     m_spinMin_S = new QDoubleSpinBox(this);
     m_spinMin_S->setRange(minLimit_S, maxLimit_S);
     m_spinMin_S->setDecimals(2);
@@ -426,38 +410,78 @@ void Component::setupMenu() {
     m_button_SKP->setCheckable(true);
     m_button_SKP->setMinimumWidth(MENU_WIDTH);
     m_button_SKP->setMaximumWidth(MENU_WIDTH);
-    m_button_SKP->setChecked(true);
-
-    m_button_SRP = new QPushButton("(S,r) -> Price", this);
-    m_button_SRP->setCheckable(true);
-    m_button_SRP->setMinimumWidth(MENU_WIDTH);
-    m_button_SRP->setMaximumWidth(MENU_WIDTH);
-    m_button_SRP->setChecked(true);
-
-    m_button_STP = new QPushButton("(S,T) -> Price", this);
-    m_button_STP->setCheckable(true);
-    m_button_STP->setMinimumWidth(MENU_WIDTH);
-    m_button_STP->setMaximumWidth(MENU_WIDTH);
-    m_button_STP->setChecked(true);
 
     m_button_SIP = new QPushButton(QString::fromUtf8(u8"(S,\u03C3) -> Price"), this);
     m_button_SIP->setCheckable(true);
     m_button_SIP->setMinimumWidth(MENU_WIDTH);
     m_button_SIP->setMaximumWidth(MENU_WIDTH);
 
+    m_button_STP = new QPushButton("(S,T) -> Price", this);
+    m_button_STP->setCheckable(true);
+    m_button_STP->setMinimumWidth(MENU_WIDTH);
+    m_button_STP->setMaximumWidth(MENU_WIDTH);
+    m_button_STP->setChecked(true); // Default
+
+    m_button_SID = new QPushButton(QString::fromUtf8(u8"(S,\u03C3) -> Delta"), this);
+    m_button_SID->setCheckable(true);
+    m_button_SID->setMinimumWidth(MENU_WIDTH);
+    m_button_SID->setMaximumWidth(MENU_WIDTH);
+
+    m_button_STD = new QPushButton("(S,T) -> Delta", this);
+    m_button_STD->setCheckable(true);
+    m_button_STD->setMinimumWidth(MENU_WIDTH);
+    m_button_STD->setMaximumWidth(MENU_WIDTH);
+
+    m_button_STG = new QPushButton("(S,T) -> Gamma", this);
+    m_button_STG->setCheckable(true);
+    m_button_STG->setMinimumWidth(MENU_WIDTH);
+    m_button_STG->setMaximumWidth(MENU_WIDTH);
+
+    m_button_STV = new QPushButton("(S,T) -> Vega", this);
+    m_button_STV->setCheckable(true);
+    m_button_STV->setMinimumWidth(MENU_WIDTH);
+    m_button_STV->setMaximumWidth(MENU_WIDTH);
+
+    m_button_STH = new QPushButton("(S,T) -> Theta", this);
+    m_button_STH->setCheckable(true);
+    m_button_STH->setMinimumWidth(MENU_WIDTH);
+    m_button_STH->setMaximumWidth(MENU_WIDTH);
+
+    m_button_STO = new QPushButton("(S,T) -> Rho", this);
+    m_button_STO->setCheckable(true);
+    m_button_STO->setMinimumWidth(MENU_WIDTH);
+    m_button_STO->setMaximumWidth(MENU_WIDTH);
+
+    m_button_STM = new QPushButton("(S,T) -> Implied Volatility", this);
+    m_button_STM->setCheckable(true);
+    m_button_STM->setMinimumWidth(MENU_WIDTH);
+    m_button_STM->setMaximumWidth(MENU_WIDTH);
+
     m_buttonGroup = new QButtonGroup(this);
     m_buttonGroup->setExclusive(true);
     m_buttonGroup->addButton(m_button_SKP, static_cast<int>(Surface::SurfaceMode::SKP));
-    m_buttonGroup->addButton(m_button_SRP, static_cast<int>(Surface::SurfaceMode::SRP));
-    m_buttonGroup->addButton(m_button_STP, static_cast<int>(Surface::SurfaceMode::STP));
     m_buttonGroup->addButton(m_button_SIP, static_cast<int>(Surface::SurfaceMode::SIP));
+    m_buttonGroup->addButton(m_button_STP, static_cast<int>(Surface::SurfaceMode::STP));
+    m_buttonGroup->addButton(m_button_SID, static_cast<int>(Surface::SurfaceMode::SID));
+    m_buttonGroup->addButton(m_button_STD, static_cast<int>(Surface::SurfaceMode::STD));
+    m_buttonGroup->addButton(m_button_STG, static_cast<int>(Surface::SurfaceMode::STG));
+    m_buttonGroup->addButton(m_button_STV, static_cast<int>(Surface::SurfaceMode::STV));
+    m_buttonGroup->addButton(m_button_STH, static_cast<int>(Surface::SurfaceMode::STH));
+    m_buttonGroup->addButton(m_button_STO, static_cast<int>(Surface::SurfaceMode::STO));
+    m_buttonGroup->addButton(m_button_STM, static_cast<int>(Surface::SurfaceMode::STM));
 
     m_leftLayout = new QVBoxLayout();
     m_leftLayout->addWidget(m_menuTitle);
     m_leftLayout->addWidget(m_button_SKP);
-    m_leftLayout->addWidget(m_button_SRP);
-    m_leftLayout->addWidget(m_button_STP);
     m_leftLayout->addWidget(m_button_SIP);
+    m_leftLayout->addWidget(m_button_STP);
+    m_leftLayout->addWidget(m_button_SID);
+    m_leftLayout->addWidget(m_button_STD);
+    m_leftLayout->addWidget(m_button_STG);
+    m_leftLayout->addWidget(m_button_STV);
+    m_leftLayout->addWidget(m_button_STH);
+    m_leftLayout->addWidget(m_button_STO);
+    m_leftLayout->addWidget(m_button_STM);
     m_leftLayout->addStretch();
 }
 

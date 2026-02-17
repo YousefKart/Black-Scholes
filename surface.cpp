@@ -18,33 +18,9 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
             Surface::InputType::SINGLE,
 
             [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
-                double d1 = Functions::computeD1(S, K, r, q, sigma, T);
-                double d2 = Functions::computeD2(sigma, T, d1);
                 return mode == OptionMode::PUT
-                           ? Functions::computePut(S, K, r, q, T, d1, d2)
-                           : Functions::computeCall(S, K, r, q, T, d1, d2);
-            }
-        }
-    },
-
-    {
-        Surface::SurfaceMode::SRP, // (S,r) -> Price
-        {
-            'R', 'S', 'P',
-            "Annual Risk-Free Rate (r)", "Stock Price (S)", "Option Price",
-            Surface::InputType::RANGE, // Stock Price
-            Surface::InputType::SINGLE,
-            Surface::InputType::RANGE, // Risk-Free Rate
-            Surface::InputType::SINGLE,
-            Surface::InputType::SINGLE,
-            Surface::InputType::SINGLE,
-
-            [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
-                double d1 = Functions::computeD1(S, K, r, q, sigma, T);
-                double d2 = Functions::computeD2(sigma, T, d1);
-                return mode == OptionMode::PUT
-                           ? Functions::computePut(S, K, r, q, T, d1, d2)
-                           : Functions::computeCall(S, K, r, q, T, d1, d2);
+                           ? Functions::computePutPrice(S, K, r, q, sigma, T)
+                           : Functions::computeCallPrice(S, K, r, q, sigma, T);
             }
         }
     },
@@ -62,11 +38,9 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
                 Surface::InputType::SINGLE,
 
                 [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
-                    double d1 = Functions::computeD1(S, K, r, q, sigma, T);
-                    double d2 = Functions::computeD2(sigma, T, d1);
                     return mode == OptionMode::PUT
-                               ? Functions::computePut(S, K, r, q, T, d1, d2)
-                               : Functions::computeCall(S, K, r, q, T, d1, d2);
+                               ? Functions::computePutPrice(S, K, r, q, sigma, T)
+                               : Functions::computeCallPrice(S, K, r, q, sigma, T);
                 }
         }
     },
@@ -84,12 +58,146 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
             Surface::InputType::RANGE, // Time
 
             [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
-                double d1 = Functions::computeD1(S, K, r, q, sigma, T);
-                double d2 = Functions::computeD2(sigma, T, d1);
                 return mode == OptionMode::PUT
-                           ? Functions::computePut(S, K, r, q, T, d1, d2)
-                           : Functions::computeCall(S, K, r, q, T, d1, d2);
+                           ? Functions::computePutPrice(S, K, r, q, sigma, T)
+                           : Functions::computeCallPrice(S, K, r, q, sigma, T);
             }
         }
     },
+
+    {
+        Surface::SurfaceMode::SID, // (S,σ) -> Delta
+        {
+            'I', 'S', 'D',
+            "Volatility (\u03C3)", "Stock Price (S)", "Delta",
+            Surface::InputType::RANGE, // Stock Price
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::RANGE, // Volatility
+            Surface::InputType::SINGLE,
+
+            [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
+                return mode == OptionMode::PUT
+                           ? Functions::computePutDelta(S, K, r, q, sigma, T)
+                           : Functions::computeCallDelta(S, K, r, q, sigma, T);
+            }
+        }
+    },
+
+    {
+        Surface::SurfaceMode::STD, // (S,T) -> Delta
+        {
+            'T', 'S', 'D',
+            "Time (Years)", "Stock Price (S)", "Delta",
+            Surface::InputType::RANGE, // Stock Price
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::RANGE, // Time
+
+            [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
+                return mode == OptionMode::PUT
+                           ? Functions::computePutDelta(S, K, r, q, sigma, T)
+                           : Functions::computeCallDelta(S, K, r, q, sigma, T);
+            }
+        }
+    },
+
+    {
+        Surface::SurfaceMode::STG, // (S,T) -> Gamma
+        {
+            'T', 'S', 'G',
+            "Time (Years)", "Stock Price (S)", "Gamma",
+            Surface::InputType::RANGE, // Stock Price
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::RANGE, // Time
+
+            [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
+                return Functions::computeGamma(S, K, r, q, sigma, T);
+            }
+        }
+    },
+
+    {
+        Surface::SurfaceMode::STV, // (S,T) -> Vega
+        {
+            'T', 'S', 'V',
+            "Time (Years)", "Stock Price (S)", "Vega",
+            Surface::InputType::RANGE, // Stock Price
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::RANGE, // Time
+
+            [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
+                return Functions::computeVega(S, K, r, q, sigma, T);
+            }
+        }
+    },
+
+    {
+        Surface::SurfaceMode::STH, // (S,T) -> Theta
+        {
+            'T', 'S', 'H',
+            "Time (Years)", "Stock Price (S)", "Theta",
+            Surface::InputType::RANGE, // Stock Price
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::RANGE, // Time
+
+            [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
+                return mode == OptionMode::PUT
+                           ? Functions::computePutTheta(S, K, r, q, sigma, T)
+                           : Functions::computeCallTheta(S, K, r, q, sigma, T);
+            }
+        }
+    },
+
+    {
+        Surface::SurfaceMode::STO, // (S,T) -> Rho
+        {
+            'T', 'S', 'O',
+            "Time (Years)", "Stock Price (S)", "Rho",
+            Surface::InputType::RANGE, // Stock Price
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::RANGE, // Time
+
+            [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
+                return mode == OptionMode::PUT
+                           ? Functions::computePutRho(S, K, r, q, sigma, T)
+                           : Functions::computeCallRho(S, K, r, q, sigma, T);
+            }
+        }
+    },
+
+    // {
+    //     Surface::SurfaceMode::STD, // (S,T) -> Implied Volatility
+    //     {
+    //         'T', 'S', 'M',
+    //         "Time (Years)", "Stock Price (S)", "Implied Volatility",
+    //         Surface::InputType::RANGE, // Stock Price
+    //         Surface::InputType::SINGLE,
+    //         Surface::InputType::SINGLE,
+    //         Surface::InputType::SINGLE,
+    //         Surface::InputType::SINGLE,
+    //         Surface::InputType::RANGE, // Time
+
+    //         [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
+    //             return mode == OptionMode::PUT
+    //                        ? Functions::computePutIV(S, K, r, q, sigma, T)
+    //                        : Functions::computeCallIV(S, K, r, q, sigma, T);
+    //         }
+    //     }
+    // },
 };

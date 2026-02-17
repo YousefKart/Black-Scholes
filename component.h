@@ -98,9 +98,15 @@ private:
     // Left-Hand Menu
     QLabel* m_menuTitle;
     QPushButton* m_button_SKP;
-    QPushButton* m_button_SRP;
     QPushButton* m_button_STP;
     QPushButton* m_button_SIP;
+    QPushButton* m_button_SID;
+    QPushButton* m_button_STD;
+    QPushButton* m_button_STG;
+    QPushButton* m_button_STV;
+    QPushButton* m_button_STH;
+    QPushButton* m_button_STO;
+    QPushButton* m_button_STM;
     QButtonGroup* m_buttonGroup;
 
     // Plot

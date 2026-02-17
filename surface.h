@@ -35,36 +35,19 @@ public:
          * */
 
         SKP, // (S,K) -> Price
-        SRP, // (S,r) -> Price
         SIP, // (S,σ) -> Price
         STP, // (S,T) -> Price
-        KRP, // (K,r) -> Price
-        KIP, // (K,σ) -> Price
-        KTP, // (K,T) -> Price
-        RTP, // (r,T) -> Price
-        ITP, // (σ,T) -> Price
 
-        SKD, // (S,K) -> Delta
         SID, // (S,σ) -> Delta
         STD, // (S,T) -> Delta
-        KTD, // (K,T) -> Delta
-        ITD, // (σ,T) -> Delta
 
-        SKG, // (S,K) -> Gamma
-        SIG, // (S,σ) -> Gamma
         STG, // (S,T) -> Gamma
 
-        SKV, // (S,K) -> Vega
-        SIV, // (S,σ) -> Vega
         STV, // (S,T) -> Vega
-        KTV, // (K,T) -> Vega
-        ITV, // (σ,T) -> Vega
 
         STH, // (S,T) -> Theta
-        SIH, // (S,σ) -> Theta
 
         STO, // (S,T) -> Rho
-        KTO, // (K,T) -> Rho
 
         STM, // (S,T) -> Implied Volatility
     };
