@@ -7,6 +7,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
     {
         Surface::SurfaceMode::STP, // (S,T) -> Price
         {
+            'T', 'S', 'P',
             "Years (T)", "Stock Price (S)", "Option Price",
             Surface::InputType::RANGE, // Stock Price
             Surface::InputType::SINGLE,
@@ -26,6 +27,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
     {
         Surface::SurfaceMode::SIP, // (S,σ) -> Price
         {
+            'I', 'S', 'P',
             "Volatility (\u03C3)", "Stock Price (S)", "Option Price",
             Surface::InputType::RANGE, // Stock Price
             Surface::InputType::SINGLE,

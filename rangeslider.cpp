@@ -33,6 +33,17 @@ void RangeSlider::setUpperValue(int value)
     }
 }
 
+void RangeSlider::setRange(int min, int max)
+{
+    QSlider::setRange(min, max);
+
+    m_lower = min;
+    m_upper = max;
+
+    update();
+}
+
+
 void RangeSlider::paintEvent(QPaintEvent*)
 {
     QStylePainter painter(this);

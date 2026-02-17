@@ -71,6 +71,10 @@ public:
     };
 
     struct SurfaceConfig {
+        char xVal;
+        char yVal;
+        char zVal;
+
         QString xLabel;
         QString yLabel;
         QString zLabel;

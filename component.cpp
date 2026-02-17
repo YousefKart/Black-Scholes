@@ -1,5 +1,9 @@
 #include "component.h"
 
+constexpr int WIDGET_WIDTH = 125;
+constexpr int WIDGET_WIDTH_DOUBLE = WIDGET_WIDTH * 2 + 6; // Count 6 pixel gap
+constexpr int MENU_WIDTH = 150;
+
 constexpr double INIT_MIN_STOCK_PRICE = 100.0;
 constexpr double INIT_MAX_STOCK_PRICE = 200.0;
 constexpr double INIT_MIN_STRIKE_PRICE = 100.0;
@@ -33,31 +37,31 @@ void Component::setConfig(Surface::SurfaceConfig config) {
 
     m_slider_K->setVisible(config.input_K == Surface::InputType::SINGLE);
     m_spin_K->setVisible(config.input_K == Surface::InputType::SINGLE);
-    //m_rangeSlider_T->setVisible(config.input_K == Surface::InputType::RANGE);
+    m_rangeSlider_K->setVisible(config.input_K == Surface::InputType::RANGE);
     m_spinMin_K->setVisible(config.input_K == Surface::InputType::RANGE);
     m_spinMax_K->setVisible(config.input_K == Surface::InputType::RANGE);
 
     m_slider_r->setVisible(config.input_r == Surface::InputType::SINGLE);
     m_spin_r->setVisible(config.input_r == Surface::InputType::SINGLE);
-    //m_rangeSlider_r->setVisible(config.input_r == Surface::InputType::RANGE);
+    m_rangeSlider_r->setVisible(config.input_r == Surface::InputType::RANGE);
     m_spinMin_r->setVisible(config.input_r == Surface::InputType::RANGE);
     m_spinMax_r->setVisible(config.input_r == Surface::InputType::RANGE);
 
     m_slider_q->setVisible(config.input_q == Surface::InputType::SINGLE);
     m_spin_q->setVisible(config.input_q == Surface::InputType::SINGLE);
-    //m_rangeSlider_q->setVisible(config.input_q == Surface::InputType::RANGE);
+    m_rangeSlider_q->setVisible(config.input_q == Surface::InputType::RANGE);
     m_spinMin_q->setVisible(config.input_q == Surface::InputType::RANGE);
     m_spinMax_q->setVisible(config.input_q == Surface::InputType::RANGE);
 
     m_slider_sigma->setVisible(config.input_sigma == Surface::InputType::SINGLE);
     m_spin_sigma->setVisible(config.input_sigma == Surface::InputType::SINGLE);
-    //m_rangeSlider_sigma->setVisible(config.input_sigma == Surface::InputType::RANGE);
+    m_rangeSlider_sigma->setVisible(config.input_sigma == Surface::InputType::RANGE);
     m_spinMin_sigma->setVisible(config.input_sigma == Surface::InputType::RANGE);
     m_spinMax_sigma->setVisible(config.input_sigma == Surface::InputType::RANGE);
 
     m_slider_T->setVisible(config.input_T == Surface::InputType::SINGLE);
     m_spin_T->setVisible(config.input_T == Surface::InputType::SINGLE);
-    //m_rangeSlider_T->setVisible(config.input_T == Surface::InputType::RANGE);
+    m_rangeSlider_T->setVisible(config.input_T == Surface::InputType::RANGE);
     m_spinMin_T->setVisible(config.input_T == Surface::InputType::RANGE);
     m_spinMax_T->setVisible(config.input_T == Surface::InputType::RANGE);
 
@@ -72,14 +76,14 @@ void Component::setupUI() {
 
     m_button_STP = new QPushButton("(S,T) -> Price", this);
     m_button_STP->setCheckable(true);
-    m_button_STP->setMinimumWidth(150);
-    m_button_STP->setMaximumWidth(150);
+    m_button_STP->setMinimumWidth(MENU_WIDTH);
+    m_button_STP->setMaximumWidth(MENU_WIDTH);
     m_button_STP->setChecked(true);
 
     m_button_SSP = new QPushButton(QString::fromUtf8(u8"(S,\u03C3) -> Price"), this);
     m_button_SSP->setCheckable(true);
-    m_button_SSP->setMinimumWidth(150);
-    m_button_SSP->setMaximumWidth(150);
+    m_button_SSP->setMinimumWidth(MENU_WIDTH);
+    m_button_SSP->setMaximumWidth(MENU_WIDTH);
 
     m_buttonGroup = new QButtonGroup(this);
     m_buttonGroup->setExclusive(true);
@@ -91,6 +95,8 @@ void Component::setupUI() {
     m_toggle_CP->setCheckable(true);
 
     // Stock Price
+    m_label_S = new QLabel("S", this);
+
     m_slider_S = new QSlider(Qt::Horizontal, this);
     m_slider_S->setRange(0, SLIDER_RESOLUTION);
     m_slider_S->setValue(spinToSliderLog(INIT_MIN_STOCK_PRICE, minLimit_S, maxLimit_S, SLIDER_RESOLUTION));
@@ -100,34 +106,50 @@ void Component::setupUI() {
     m_spin_S->setDecimals(2);
     m_spin_S->setSingleStep(0.01);
     m_spin_S->setValue(INIT_MIN_STOCK_PRICE);
-    m_spin_S->setPrefix("S = ");
-    m_spin_S->setMinimumWidth(150);
-    m_spin_S->setMaximumWidth(150);
+    m_spin_S->setMinimumWidth(WIDGET_WIDTH_DOUBLE);
+    m_spin_S->setMaximumWidth(WIDGET_WIDTH_DOUBLE);
 
     m_rangeSlider_S = new RangeSlider(Qt::Horizontal, this);
     m_rangeSlider_S->setRange(0, SLIDER_RESOLUTION);
     m_rangeSlider_S->setLowerValue(spinToSliderLog(INIT_MIN_STOCK_PRICE, minLimit_S, maxLimit_S, SLIDER_RESOLUTION));
     m_rangeSlider_S->setUpperValue(spinToSliderLog(INIT_MAX_STOCK_PRICE, minLimit_S, maxLimit_S, SLIDER_RESOLUTION));
 
+    qDebug() << "Slider raw:" << m_rangeSlider_S->lowerValue()
+             << "Mapped value:"
+             << sliderToSpinLog(m_rangeSlider_S->lowerValue(),
+                                minLimit_S,
+                                maxLimit_S,
+                                SLIDER_RESOLUTION);
+
+    qDebug() << "Slider raw:" << m_rangeSlider_S->upperValue()
+             << "Mapped value:"
+             << sliderToSpinLog(m_rangeSlider_S->upperValue(),
+                                minLimit_S,
+                                maxLimit_S,
+                                SLIDER_RESOLUTION);
+
+
+
     m_spinMin_S = new QDoubleSpinBox(this);
     m_spinMin_S->setRange(minLimit_S, maxLimit_S);
     m_spinMin_S->setDecimals(2);
     m_spinMin_S->setSingleStep(0.01);
     m_spinMin_S->setValue(INIT_MIN_STOCK_PRICE);
-    m_spinMin_S->setPrefix("Min S = ");
-    m_spinMin_S->setMinimumWidth(150);
-    m_spinMin_S->setMaximumWidth(150);
+    m_spinMin_S->setPrefix("Min: ");
+    m_spinMin_S->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMin_S->setMaximumWidth(WIDGET_WIDTH);
 
     m_spinMax_S = new QDoubleSpinBox(this);
     m_spinMax_S->setRange(minLimit_S, maxLimit_S);
     m_spinMax_S->setDecimals(2);
     m_spinMax_S->setSingleStep(0.01);
     m_spinMax_S->setValue(INIT_MAX_STOCK_PRICE);
-    m_spinMax_S->setPrefix("Max S = ");
-    m_spinMax_S->setMinimumWidth(150);
-    m_spinMax_S->setMaximumWidth(150);
+    m_spinMax_S->setPrefix("Max: ");
+    m_spinMax_S->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMax_S->setMaximumWidth(WIDGET_WIDTH);
 
     m_layout_S = new QHBoxLayout();
+    m_layout_S->addWidget(m_label_S);
     m_layout_S->addWidget(m_slider_S);
     m_layout_S->addWidget(m_spin_S);
     m_layout_S->addWidget(m_rangeSlider_S);
@@ -135,6 +157,8 @@ void Component::setupUI() {
     m_layout_S->addWidget(m_spinMax_S);
 
     // Strike Price
+    m_label_K = new QLabel("K", this);
+
     m_slider_K = new QSlider(Qt::Horizontal, this);
     m_slider_K->setRange(0,SLIDER_RESOLUTION);
     m_slider_K->setValue(spinToSliderLog(INIT_MIN_STRIKE_PRICE, minLimit_K, maxLimit_K, SLIDER_RESOLUTION));
@@ -144,37 +168,43 @@ void Component::setupUI() {
     m_spin_K->setDecimals(2);
     m_spin_K->setSingleStep(0.01);
     m_spin_K->setValue(INIT_MIN_STRIKE_PRICE);
-    m_spin_K->setPrefix("K = ");
-    m_spin_K->setMinimumWidth(150);
-    m_spin_K->setMaximumWidth(150);
+    m_spin_K->setMinimumWidth(WIDGET_WIDTH_DOUBLE);
+    m_spin_K->setMaximumWidth(WIDGET_WIDTH_DOUBLE);
 
-    // TODO: Add m_rangeSlider_K here
+    m_rangeSlider_K = new RangeSlider(Qt::Horizontal, this);
+    m_rangeSlider_K->setRange(0, SLIDER_RESOLUTION);
+    m_rangeSlider_K->setLowerValue(spinToSliderLog(INIT_MIN_STRIKE_PRICE, minLimit_K, maxLimit_K, SLIDER_RESOLUTION));
+    m_rangeSlider_K->setUpperValue(spinToSliderLog(INIT_MAX_STRIKE_PRICE, minLimit_K, maxLimit_K, SLIDER_RESOLUTION));
 
     m_spinMin_K = new QDoubleSpinBox(this);
     m_spinMin_K->setRange(minLimit_K, maxLimit_K);
     m_spinMin_K->setDecimals(2);
     m_spinMin_K->setSingleStep(0.01);
     m_spinMin_K->setValue(INIT_MIN_STRIKE_PRICE);
-    m_spinMin_K->setPrefix("Min K = ");
-    m_spinMin_K->setMinimumWidth(150);
-    m_spinMin_K->setMaximumWidth(150);
+    m_spinMin_K->setPrefix("Min: ");
+    m_spinMin_K->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMin_K->setMaximumWidth(WIDGET_WIDTH);
 
     m_spinMax_K = new QDoubleSpinBox(this);
     m_spinMax_K->setRange(minLimit_K, maxLimit_K);
     m_spinMax_K->setDecimals(2);
     m_spinMax_K->setSingleStep(0.01);
     m_spinMax_K->setValue(INIT_MAX_STRIKE_PRICE);
-    m_spinMax_K->setPrefix("Max K = ");
-    m_spinMax_K->setMinimumWidth(150);
-    m_spinMax_K->setMaximumWidth(150);
+    m_spinMax_K->setPrefix("Max: ");
+    m_spinMax_K->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMax_K->setMaximumWidth(WIDGET_WIDTH);
 
     m_layout_K = new QHBoxLayout();
+    m_layout_K->addWidget(m_label_K);
     m_layout_K->addWidget(m_slider_K);
     m_layout_K->addWidget(m_spin_K);
+    m_layout_K->addWidget(m_rangeSlider_K);
     m_layout_K->addWidget(m_spinMin_K);
     m_layout_K->addWidget(m_spinMax_K);
 
     // Risk-Free Rate (Annual)
+    m_label_r = new QLabel("r", this);
+
     m_slider_r = new QSlider(Qt::Horizontal, this);
     m_slider_r->setRange(0, SLIDER_RESOLUTION);
     m_slider_r->setValue(spinToSliderLinear(INIT_MIN_RISK_FREE_RATE, minLimit_r, maxLimit_r, SLIDER_RESOLUTION));
@@ -184,40 +214,46 @@ void Component::setupUI() {
     m_spin_r->setDecimals(2);
     m_spin_r->setSingleStep(0.1);
     m_spin_r->setValue(INIT_MIN_RISK_FREE_RATE);
-    m_spin_r->setPrefix("r = ");
     m_spin_r->setSuffix("%");
-    m_spin_r->setMinimumWidth(150);
-    m_spin_r->setMaximumWidth(150);
+    m_spin_r->setMinimumWidth(WIDGET_WIDTH_DOUBLE);
+    m_spin_r->setMaximumWidth(WIDGET_WIDTH_DOUBLE);
 
-    // TODO: Add m_rangeSlider_r here
+    m_rangeSlider_r = new RangeSlider(Qt::Horizontal, this);
+    m_rangeSlider_r->setRange(0, SLIDER_RESOLUTION);
+    m_rangeSlider_r->setLowerValue(spinToSliderLinear(INIT_MIN_RISK_FREE_RATE, minLimit_r, maxLimit_r, SLIDER_RESOLUTION));
+    m_rangeSlider_r->setUpperValue(spinToSliderLinear(INIT_MAX_RISK_FREE_RATE, minLimit_r, maxLimit_r, SLIDER_RESOLUTION));
 
     m_spinMin_r = new QDoubleSpinBox(this);
     m_spinMin_r->setRange(minLimit_r, maxLimit_r);
     m_spinMin_r->setDecimals(2);
     m_spinMin_r->setSingleStep(0.1);
     m_spinMin_r->setValue(INIT_MIN_RISK_FREE_RATE);
-    m_spinMin_r->setPrefix("Min r = ");
+    m_spinMin_r->setPrefix("Min: ");
     m_spinMin_r->setSuffix("%");
-    m_spinMin_r->setMinimumWidth(150);
-    m_spinMin_r->setMaximumWidth(150);
+    m_spinMin_r->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMin_r->setMaximumWidth(WIDGET_WIDTH);
 
     m_spinMax_r = new QDoubleSpinBox(this);
     m_spinMax_r->setRange(minLimit_r, maxLimit_r);
     m_spinMax_r->setDecimals(2);
     m_spinMax_r->setSingleStep(0.1);
     m_spinMax_r->setValue(INIT_MAX_RISK_FREE_RATE);
-    m_spinMax_r->setPrefix("Max r = ");
+    m_spinMax_r->setPrefix("Max: ");
     m_spinMax_r->setSuffix("%");
-    m_spinMax_r->setMinimumWidth(150);
-    m_spinMax_r->setMaximumWidth(150);
+    m_spinMax_r->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMax_r->setMaximumWidth(WIDGET_WIDTH);
 
     m_layout_r = new QHBoxLayout();
+    m_layout_r->addWidget(m_label_r);
     m_layout_r->addWidget(m_slider_r);
     m_layout_r->addWidget(m_spin_r);
+    m_layout_r->addWidget(m_rangeSlider_r);
     m_layout_r->addWidget(m_spinMin_r);
     m_layout_r->addWidget(m_spinMax_r);
 
     // Dividend Yield (Annual)
+    m_label_q = new QLabel("q", this);
+
     m_slider_q = new QSlider(Qt::Horizontal, this);
     m_slider_q->setRange(0, SLIDER_RESOLUTION);
     m_slider_q->setValue(spinToSliderLinear(INIT_MAX_DIVIDEND_YIELD, minLimit_q, maxLimit_q, SLIDER_RESOLUTION));
@@ -227,40 +263,46 @@ void Component::setupUI() {
     m_spin_q->setDecimals(2);
     m_spin_q->setSingleStep(0.1);
     m_spin_q->setValue(INIT_MAX_DIVIDEND_YIELD);
-    m_spin_q->setPrefix("q = ");
     m_spin_q->setSuffix("%");
-    m_spin_q->setMinimumWidth(150);
-    m_spin_q->setMaximumWidth(150);
+    m_spin_q->setMinimumWidth(WIDGET_WIDTH_DOUBLE);
+    m_spin_q->setMaximumWidth(WIDGET_WIDTH_DOUBLE);
 
-    // TODO: Add m_rangeSlider_q here
+    m_rangeSlider_q = new RangeSlider(Qt::Horizontal, this);
+    m_rangeSlider_q->setRange(0, SLIDER_RESOLUTION);
+    m_rangeSlider_q->setLowerValue(spinToSliderLinear(INIT_MIN_DIVIDEND_YIELD, minLimit_q, maxLimit_q, SLIDER_RESOLUTION));
+    m_rangeSlider_q->setUpperValue(spinToSliderLinear(INIT_MAX_DIVIDEND_YIELD, minLimit_q, maxLimit_q, SLIDER_RESOLUTION));
 
     m_spinMin_q = new QDoubleSpinBox(this);
     m_spinMin_q->setRange(minLimit_q, maxLimit_q);
     m_spinMin_q->setDecimals(2);
     m_spinMin_q->setSingleStep(0.1);
-    m_spinMin_q->setValue(INIT_MAX_DIVIDEND_YIELD);
-    m_spinMin_q->setPrefix("Min q = ");
+    m_spinMin_q->setValue(INIT_MIN_DIVIDEND_YIELD);
+    m_spinMin_q->setPrefix("Min: ");
     m_spinMin_q->setSuffix("%");
-    m_spinMin_q->setMinimumWidth(150);
-    m_spinMin_q->setMaximumWidth(150);
+    m_spinMin_q->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMin_q->setMaximumWidth(WIDGET_WIDTH);
 
     m_spinMax_q = new QDoubleSpinBox(this);
     m_spinMax_q->setRange(minLimit_q, maxLimit_q);
     m_spinMax_q->setDecimals(2);
     m_spinMax_q->setSingleStep(0.1);
-    m_spinMax_q->setValue(INIT_MAX_RISK_FREE_RATE);
-    m_spinMax_q->setPrefix("Max q = ");
+    m_spinMax_q->setValue(INIT_MAX_DIVIDEND_YIELD);
+    m_spinMax_q->setPrefix("Max: ");
     m_spinMax_q->setSuffix("%");
-    m_spinMax_q->setMinimumWidth(150);
-    m_spinMax_q->setMaximumWidth(150);
+    m_spinMax_q->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMax_q->setMaximumWidth(WIDGET_WIDTH);
 
     m_layout_q = new QHBoxLayout();
+    m_layout_q->addWidget(m_label_q);
     m_layout_q->addWidget(m_slider_q);
     m_layout_q->addWidget(m_spin_q);
+    m_layout_q->addWidget(m_rangeSlider_q);
     m_layout_q->addWidget(m_spinMin_q);
     m_layout_q->addWidget(m_spinMax_q);
 
     // Volatility (Annual)
+    m_label_sigma = new QLabel("\u03C3", this);
+
     m_slider_sigma = new QSlider(Qt::Horizontal, this);
     m_slider_sigma->setRange(0, SLIDER_RESOLUTION);
     m_slider_sigma->setValue(spinToSliderLinear(INIT_MIN_VOLATILITY, minLimit_sigma, maxLimit_sigma, SLIDER_RESOLUTION));
@@ -270,37 +312,43 @@ void Component::setupUI() {
     m_spin_sigma->setDecimals(4);
     m_spin_sigma->setSingleStep(0.01);
     m_spin_sigma->setValue(INIT_MIN_VOLATILITY);
-    m_spin_sigma->setPrefix("\u03C3 = ");
-    m_spin_sigma->setMinimumWidth(150);
-    m_spin_sigma->setMaximumWidth(150);
+    m_spin_sigma->setMinimumWidth(WIDGET_WIDTH_DOUBLE);
+    m_spin_sigma->setMaximumWidth(WIDGET_WIDTH_DOUBLE);
 
-    // TODO: Add m_rangeSlider_sigma here
+    m_rangeSlider_sigma = new RangeSlider(Qt::Horizontal, this);
+    m_rangeSlider_sigma->setRange(0, SLIDER_RESOLUTION);
+    m_rangeSlider_sigma->setLowerValue(spinToSliderLinear(INIT_MIN_VOLATILITY, minLimit_sigma, maxLimit_sigma, SLIDER_RESOLUTION));
+    m_rangeSlider_sigma->setUpperValue(spinToSliderLinear(INIT_MAX_VOLATILITY, minLimit_sigma, maxLimit_sigma, SLIDER_RESOLUTION));
 
     m_spinMin_sigma = new QDoubleSpinBox(this);
     m_spinMin_sigma->setRange(minLimit_sigma, maxLimit_sigma);
     m_spinMin_sigma->setDecimals(4);
     m_spinMin_sigma->setSingleStep(0.01);
     m_spinMin_sigma->setValue(INIT_MIN_VOLATILITY);
-    m_spinMin_sigma->setPrefix("Min \u03C3 = ");
-    m_spinMin_sigma->setMinimumWidth(150);
-    m_spinMin_sigma->setMaximumWidth(150);
+    m_spinMin_sigma->setPrefix("Min: ");
+    m_spinMin_sigma->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMin_sigma->setMaximumWidth(WIDGET_WIDTH);
 
     m_spinMax_sigma = new QDoubleSpinBox(this);
     m_spinMax_sigma->setRange(minLimit_sigma, maxLimit_sigma);
     m_spinMax_sigma->setDecimals(4);
     m_spinMax_sigma->setSingleStep(0.01);
     m_spinMax_sigma->setValue(INIT_MAX_VOLATILITY);
-    m_spinMax_sigma->setPrefix("Max \u03C3 = ");
-    m_spinMax_sigma->setMinimumWidth(150);
-    m_spinMax_sigma->setMaximumWidth(150);
+    m_spinMax_sigma->setPrefix("Max: ");
+    m_spinMax_sigma->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMax_sigma->setMaximumWidth(WIDGET_WIDTH);
 
     m_layout_sigma = new QHBoxLayout();
+    m_layout_sigma->addWidget(m_label_sigma);
     m_layout_sigma->addWidget(m_slider_sigma);
     m_layout_sigma->addWidget(m_spin_sigma);
+    m_layout_sigma->addWidget(m_rangeSlider_sigma);
     m_layout_sigma->addWidget(m_spinMin_sigma);
     m_layout_sigma->addWidget(m_spinMax_sigma);
 
     // Time
+    m_label_T = new QLabel("T", this);
+
     m_slider_T = new QSlider(Qt::Horizontal, this);
     m_slider_T->setRange(0, SLIDER_RESOLUTION);
     m_slider_T->setValue(spinToSliderLinear(INIT_MIN_TIME_TO_EXPIRY, minLimit_T, maxLimit_T, SLIDER_RESOLUTION));
@@ -310,36 +358,40 @@ void Component::setupUI() {
     m_spin_T->setDecimals(2);
     m_spin_T->setSingleStep(1);
     m_spin_T->setValue(INIT_MIN_TIME_TO_EXPIRY);
-    m_spin_T->setPrefix("T = ");
     m_spin_T->setSuffix(" Days");
-    m_spin_T->setMinimumWidth(150);
-    m_spin_T->setMaximumWidth(150);
+    m_spin_T->setMinimumWidth(WIDGET_WIDTH_DOUBLE);
+    m_spin_T->setMaximumWidth(WIDGET_WIDTH_DOUBLE);
 
-    // TODO: Add m_rangeSlider_T here
+    m_rangeSlider_T = new RangeSlider(Qt::Horizontal, this);
+    m_rangeSlider_T->setRange(0, SLIDER_RESOLUTION);
+    m_rangeSlider_T->setLowerValue(spinToSliderLinear(INIT_MIN_TIME_TO_EXPIRY, minLimit_T, maxLimit_T, SLIDER_RESOLUTION));
+    m_rangeSlider_T->setUpperValue(spinToSliderLinear(INIT_MAX_TIME_TO_EXPIRY, minLimit_T, maxLimit_T, SLIDER_RESOLUTION));
 
     m_spinMin_T = new QDoubleSpinBox(this);
     m_spinMin_T->setRange(minLimit_T, maxLimit_T);
     m_spinMin_T->setDecimals(2);
     m_spinMin_T->setSingleStep(1);
     m_spinMin_T->setValue(INIT_MIN_TIME_TO_EXPIRY);
-    m_spinMin_T->setPrefix("Min T = ");
+    m_spinMin_T->setPrefix("Min: ");
     m_spinMin_T->setSuffix(" Days");
-    m_spinMin_T->setMinimumWidth(150);
-    m_spinMin_T->setMaximumWidth(150);
+    m_spinMin_T->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMin_T->setMaximumWidth(WIDGET_WIDTH);
 
     m_spinMax_T = new QDoubleSpinBox(this);
     m_spinMax_T->setRange(minLimit_T, maxLimit_T);
     m_spinMax_T->setDecimals(2);
     m_spinMax_T->setSingleStep(1);
     m_spinMax_T->setValue(INIT_MAX_TIME_TO_EXPIRY);
-    m_spinMax_T->setPrefix("Max T = ");
+    m_spinMax_T->setPrefix("Max: ");
     m_spinMax_T->setSuffix(" Days");
-    m_spinMax_T->setMinimumWidth(150);
-    m_spinMax_T->setMaximumWidth(150);
+    m_spinMax_T->setMinimumWidth(WIDGET_WIDTH);
+    m_spinMax_T->setMaximumWidth(WIDGET_WIDTH);
 
     m_layout_T = new QHBoxLayout();
+    m_layout_T->addWidget(m_label_T);
     m_layout_T->addWidget(m_slider_T);
     m_layout_T->addWidget(m_spin_T);
+    m_layout_T->addWidget(m_rangeSlider_T);
     m_layout_T->addWidget(m_spinMin_T);
     m_layout_T->addWidget(m_spinMax_T);
 

@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 
     Component ui;
     ui.setWindowTitle("Black Scholes Model");
-    ui.resize(700,450);
+    ui.resize(750,450);
 
     Compute cpu(ui);
 

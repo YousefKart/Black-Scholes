@@ -15,6 +15,7 @@ public:
 
     void setLowerValue(int value);
     void setUpperValue(int value);
+    void setRange(int min, int max);
 
 signals:
     void lowerValueChanged(int);
