@@ -2,8 +2,7 @@
 <p>An interactive desktop application for visualizing European-style option pricing using the Black-Scholes model.</p>
 <p>Built with C++17 and Qt 6, this tool allows real-time exploration of how option prices change with respect to stock price, volatility, time to expiry, and more.</p>
 
-<img width="702" height="536" alt="image" src="https://github.com/user-attachments/assets/75cd363c-7796-49cb-931d-98c9da9e7b30" />
-<img width="702" height="536" alt="image" src="https://github.com/user-attachments/assets/5fcc4e82-fd35-42fc-a051-73b4e7a091c9" />
+<img width="753" height="552" alt="image" src="https://github.com/user-attachments/assets/b7352037-49e6-4bdd-a922-d2bc9ce74365" />
 
 <hr>
 
