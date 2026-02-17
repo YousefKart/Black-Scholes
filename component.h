@@ -91,13 +91,16 @@ public:
 private:
     void setupUI();
     void setupPlot();
+    void setupMenu();
 
     Surface::SurfaceConfig config;
 
     // Left-Hand Menu
     QLabel* m_menuTitle;
+    QPushButton* m_button_SKP;
+    QPushButton* m_button_SRP;
     QPushButton* m_button_STP;
-    QPushButton* m_button_SSP;
+    QPushButton* m_button_SIP;
     QButtonGroup* m_buttonGroup;
 
     // Plot

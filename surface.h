@@ -11,6 +11,11 @@ class Surface : public QObject
 public:
     Surface();
 
+    enum class OptionMode {
+        PUT,
+        CALL
+    };
+
     enum class SurfaceMode {
         /*
          * S = Stock Price
@@ -86,7 +91,7 @@ public:
         InputType input_sigma;
         InputType input_T;
 
-        std::function<double(double S, double K, double r, double q, double sigma, double T)> computeZ;
+        std::function<double(OptionMode mode, double S, double K, double r, double q, double sigma, double T)> computeZ;
     };
 
     static std::unordered_map<SurfaceMode, SurfaceConfig> surfaceMap;

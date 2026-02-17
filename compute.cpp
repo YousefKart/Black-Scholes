@@ -44,7 +44,7 @@ Compute::Compute(Component& ui) :
 }
 
 void Compute::recompute() {
-    Option mode = ui.toggle_CP()->isChecked() ? Option::PUT : Option::CALL;
+    Surface::OptionMode mode = ui.toggle_CP()->isChecked() ? Surface::OptionMode::PUT : Surface::OptionMode::CALL;
 
     // Variables
     S = ui.spin_S()->value();
@@ -104,13 +104,13 @@ void Compute::recompute() {
         params[idx] = min_x + x * delta_x;
         for (int y = 0; y < SAMPLES; ++y) {
             params[idy] = min_y + y * delta_y;
-            price = config.computeZ(params[0], params[1], params[2], params[3], params[4], params[5]);
+            price = config.computeZ(mode, params[0], params[1], params[2], params[3], params[4], params[5]);
             mapData->setCell(x, y, price);
         }
     }
 
-    ui.toggle_CP()->setText(mode == Option::PUT ? "Mode: Puts" : "Mode: Calls");
-    ui.colorScale()->axis()->setLabel(config.zLabel);
+    ui.toggle_CP()->setText(mode == Surface::OptionMode::PUT ? "Mode: Puts" : "Mode: Calls");
+    ui.colorScale()->axis()->setLabel(mode == Surface::OptionMode::PUT ? "Put Price" : "Call Price");
     ui.colorMap()->rescaleDataRange(true);
     ui.plot()->xAxis->setLabel(config.xLabel);
     ui.plot()->yAxis->setLabel(config.yLabel);

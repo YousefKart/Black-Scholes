@@ -69,26 +69,7 @@ void Component::setConfig(Surface::SurfaceConfig config) {
 
 void Component::setupUI() {
     setupPlot();
-
-    // Left-Hand Menu
-    m_menuTitle = new QLabel("Surface Mode", this);
-    m_menuTitle->setAlignment(Qt::AlignCenter);
-
-    m_button_STP = new QPushButton("(S,T) -> Price", this);
-    m_button_STP->setCheckable(true);
-    m_button_STP->setMinimumWidth(MENU_WIDTH);
-    m_button_STP->setMaximumWidth(MENU_WIDTH);
-    m_button_STP->setChecked(true);
-
-    m_button_SSP = new QPushButton(QString::fromUtf8(u8"(S,\u03C3) -> Price"), this);
-    m_button_SSP->setCheckable(true);
-    m_button_SSP->setMinimumWidth(MENU_WIDTH);
-    m_button_SSP->setMaximumWidth(MENU_WIDTH);
-
-    m_buttonGroup = new QButtonGroup(this);
-    m_buttonGroup->setExclusive(true);
-    m_buttonGroup->addButton(m_button_STP, static_cast<int>(Surface::SurfaceMode::STP));
-    m_buttonGroup->addButton(m_button_SSP, static_cast<int>(Surface::SurfaceMode::SIP));
+    setupMenu();
 
     // Display Type (Calls/Puts)
     m_toggle_CP = new QPushButton(this);
@@ -351,13 +332,13 @@ void Component::setupUI() {
 
     m_slider_T = new QSlider(Qt::Horizontal, this);
     m_slider_T->setRange(0, SLIDER_RESOLUTION);
-    m_slider_T->setValue(spinToSliderLinear(INIT_MIN_TIME_TO_EXPIRY, minLimit_T, maxLimit_T, SLIDER_RESOLUTION));
+    m_slider_T->setValue(spinToSliderLinear(180.0, minLimit_T, maxLimit_T, SLIDER_RESOLUTION));
 
     m_spin_T = new QDoubleSpinBox(this);
     m_spin_T->setRange(minLimit_T, maxLimit_T);
     m_spin_T->setDecimals(2);
     m_spin_T->setSingleStep(1);
-    m_spin_T->setValue(INIT_MIN_TIME_TO_EXPIRY);
+    m_spin_T->setValue(180.0);
     m_spin_T->setSuffix(" Days");
     m_spin_T->setMinimumWidth(WIDGET_WIDTH_DOUBLE);
     m_spin_T->setMaximumWidth(WIDGET_WIDTH_DOUBLE);
@@ -394,13 +375,6 @@ void Component::setupUI() {
     m_layout_T->addWidget(m_rangeSlider_T);
     m_layout_T->addWidget(m_spinMin_T);
     m_layout_T->addWidget(m_spinMax_T);
-
-    // Menu Layout
-    m_leftLayout = new QVBoxLayout();
-    m_leftLayout->addWidget(m_menuTitle);
-    m_leftLayout->addWidget(m_button_STP);
-    m_leftLayout->addWidget(m_button_SSP);
-    m_leftLayout->addStretch();
 
     // Primary Layout
     m_rightLayout = new QVBoxLayout();
@@ -441,6 +415,50 @@ void Component::setupPlot() {
 
     m_plot->plotLayout()->setColumnStretchFactor(0,4);
     m_plot->plotLayout()->setColumnStretchFactor(1,1);
+}
+
+void Component::setupMenu() {
+
+    m_menuTitle = new QLabel("Surface Mode", this);
+    m_menuTitle->setAlignment(Qt::AlignCenter);
+
+    m_button_SKP = new QPushButton("(S,K) -> Price", this);
+    m_button_SKP->setCheckable(true);
+    m_button_SKP->setMinimumWidth(MENU_WIDTH);
+    m_button_SKP->setMaximumWidth(MENU_WIDTH);
+    m_button_SKP->setChecked(true);
+
+    m_button_SRP = new QPushButton("(S,r) -> Price", this);
+    m_button_SRP->setCheckable(true);
+    m_button_SRP->setMinimumWidth(MENU_WIDTH);
+    m_button_SRP->setMaximumWidth(MENU_WIDTH);
+    m_button_SRP->setChecked(true);
+
+    m_button_STP = new QPushButton("(S,T) -> Price", this);
+    m_button_STP->setCheckable(true);
+    m_button_STP->setMinimumWidth(MENU_WIDTH);
+    m_button_STP->setMaximumWidth(MENU_WIDTH);
+    m_button_STP->setChecked(true);
+
+    m_button_SIP = new QPushButton(QString::fromUtf8(u8"(S,\u03C3) -> Price"), this);
+    m_button_SIP->setCheckable(true);
+    m_button_SIP->setMinimumWidth(MENU_WIDTH);
+    m_button_SIP->setMaximumWidth(MENU_WIDTH);
+
+    m_buttonGroup = new QButtonGroup(this);
+    m_buttonGroup->setExclusive(true);
+    m_buttonGroup->addButton(m_button_SKP, static_cast<int>(Surface::SurfaceMode::SKP));
+    m_buttonGroup->addButton(m_button_SRP, static_cast<int>(Surface::SurfaceMode::SRP));
+    m_buttonGroup->addButton(m_button_STP, static_cast<int>(Surface::SurfaceMode::STP));
+    m_buttonGroup->addButton(m_button_SIP, static_cast<int>(Surface::SurfaceMode::SIP));
+
+    m_leftLayout = new QVBoxLayout();
+    m_leftLayout->addWidget(m_menuTitle);
+    m_leftLayout->addWidget(m_button_SKP);
+    m_leftLayout->addWidget(m_button_SRP);
+    m_leftLayout->addWidget(m_button_STP);
+    m_leftLayout->addWidget(m_button_SIP);
+    m_leftLayout->addStretch();
 }
 
 int Component::spinToSliderLinear(double stepVal, double min, double max, int steps) {

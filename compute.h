@@ -13,11 +13,6 @@ public:
     explicit Compute(Component& ui);
 
 private:
-    enum class Option {
-        PUT,
-        CALL
-    };
-
     static constexpr int SAMPLES = 200;
 
     void recompute();
