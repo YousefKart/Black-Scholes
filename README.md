@@ -2,7 +2,7 @@
 <p>An interactive desktop application for visualizing European-style option pricing using the Black-Scholes model.</p>
 <p>Built with C++17 and Qt 6, this tool allows real-time exploration of how option prices change with respect to stock price, volatility, time to expiry, and more.</p>
 
-<img width="753" height="552" alt="image" src="https://github.com/user-attachments/assets/b7352037-49e6-4bdd-a922-d2bc9ce74365" />
+<img width="752" height="552" alt="image" src="https://github.com/user-attachments/assets/713ac550-c287-4454-9827-b3335ffd3d4b" />
 
 <hr>
 
@@ -13,9 +13,15 @@
   <li>Toggle between Call and Put prices</li>
   <li>Multiple surface modes:
   <ul>
-    <li><code>(S,T) -> Price</code></li>
+    <li><code>(S,K) -> Price</code></li>
     <li><code>(S,σ) -> Price</code></li>
-    <li><code>(S,σ) -> Delta</code> (Coming soon)</li>
+    <li><code>(S,T) -> Price</code></li>
+    <li><code>(S,σ) -> Delta</code></li>
+    <li><code>(S,T) -> Delta</code></li>
+    <li><code>(S,T) -> Gamma</code></li>
+    <li><code>(S,T) -> Vega</code></li>
+    <li><code>(S,T) -> Theta</code></li>
+    <li><code>(S,T) -> Rho</code></li>
   </ul>
   </li>
   <li>Clean MVC-style separation:
@@ -101,7 +107,7 @@ cmake --build .
 - [x] Connect input fields
 - [x] Create heat map
 - [x] Add Price Surfaces
-- [ ] Add Gamma Surfaces
+- [X] Add Gamma Surfaces
 - [x] Optimize for smooth sliders
 - [ ] Add Implied Volatility Solver
 - [ ] Create 3D plot (OpenGL Surface)
