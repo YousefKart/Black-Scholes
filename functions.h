@@ -11,6 +11,8 @@ public:
     static double computeD2(double sigma, double T, double d1);
     static double computeN(double x);
     static double computeNP(double x);
+
+    // Price
     static double computeCallPrice(double S, double K, double r, double q, double sigma, double T);
     static double computePutPrice(double S, double K, double r, double q, double sigma, double T);
 
@@ -23,6 +25,10 @@ public:
     static double computePutTheta(double S, double K, double r, double q, double sigma, double T);
     static double computeCallRho(double S, double K, double r, double q, double sigma, double T);
     static double computePutRho(double S, double K, double r, double q, double sigma, double T);
+
+    // Implied Volatility
+    static double computeCallIV(double S, double K, double r, double q, double P, double T);
+    static double computePutIV(double S, double K, double r, double q, double P, double T);
 
 };
 

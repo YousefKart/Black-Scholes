@@ -181,23 +181,23 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
         }
     },
 
-    // {
-    //     Surface::SurfaceMode::STD, // (S,T) -> Implied Volatility
-    //     {
-    //         'T', 'S', 'M',
-    //         "Time (Years)", "Stock Price (S)", "Implied Volatility",
-    //         Surface::InputType::RANGE, // Stock Price
-    //         Surface::InputType::SINGLE,
-    //         Surface::InputType::SINGLE,
-    //         Surface::InputType::SINGLE,
-    //         Surface::InputType::SINGLE,
-    //         Surface::InputType::RANGE, // Time
+    {
+        Surface::SurfaceMode::STD, // (S,T) -> Implied Volatility
+        {
+            'T', 'S', 'M',
+            "Time (Years)", "Stock Price (S)", "Implied Volatility",
+            Surface::InputType::RANGE, // Stock Price
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::SINGLE,
+            Surface::InputType::RANGE, // Time
 
-    //         [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
-    //             return mode == OptionMode::PUT
-    //                        ? Functions::computePutIV(S, K, r, q, sigma, T)
-    //                        : Functions::computeCallIV(S, K, r, q, sigma, T);
-    //         }
-    //     }
-    // },
+            [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
+                return mode == OptionMode::PUT
+                           ? Functions::computePutIV(S, K, r, q, sigma, T)
+                           : Functions::computeCallIV(S, K, r, q, sigma, T);
+            }
+        }
+    },
 };

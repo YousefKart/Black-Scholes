@@ -452,10 +452,10 @@ void Component::setupMenu() {
     m_button_STO->setMinimumWidth(MENU_WIDTH);
     m_button_STO->setMaximumWidth(MENU_WIDTH);
 
-    m_button_STM = new QPushButton("(S,T) -> Implied Volatility", this);
-    m_button_STM->setCheckable(true);
-    m_button_STM->setMinimumWidth(MENU_WIDTH);
-    m_button_STM->setMaximumWidth(MENU_WIDTH);
+    // m_button_STM = new QPushButton("(S,T) -> IV", this);
+    // m_button_STM->setCheckable(true);
+    // m_button_STM->setMinimumWidth(MENU_WIDTH);
+    // m_button_STM->setMaximumWidth(MENU_WIDTH);
 
     m_buttonGroup = new QButtonGroup(this);
     m_buttonGroup->setExclusive(true);
@@ -468,7 +468,7 @@ void Component::setupMenu() {
     m_buttonGroup->addButton(m_button_STV, static_cast<int>(Surface::SurfaceMode::STV));
     m_buttonGroup->addButton(m_button_STH, static_cast<int>(Surface::SurfaceMode::STH));
     m_buttonGroup->addButton(m_button_STO, static_cast<int>(Surface::SurfaceMode::STO));
-    m_buttonGroup->addButton(m_button_STM, static_cast<int>(Surface::SurfaceMode::STM));
+    // m_buttonGroup->addButton(m_button_STM, static_cast<int>(Surface::SurfaceMode::STM));
 
     m_leftLayout = new QVBoxLayout();
     m_leftLayout->addWidget(m_menuTitle);
@@ -481,7 +481,7 @@ void Component::setupMenu() {
     m_leftLayout->addWidget(m_button_STV);
     m_leftLayout->addWidget(m_button_STH);
     m_leftLayout->addWidget(m_button_STO);
-    m_leftLayout->addWidget(m_button_STM);
+    // m_leftLayout->addWidget(m_button_STM);
     m_leftLayout->addStretch();
 }
 

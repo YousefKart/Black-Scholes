@@ -106,7 +106,7 @@ private:
     QPushButton* m_button_STV;
     QPushButton* m_button_STH;
     QPushButton* m_button_STO;
-    QPushButton* m_button_STM;
+    // QPushButton* m_button_STM;
     QButtonGroup* m_buttonGroup;
 
     // Plot

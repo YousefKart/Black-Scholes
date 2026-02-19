@@ -95,3 +95,11 @@ double Functions::computePutRho(double S, double K, double r, double q, double s
 
     return -K * T * std::exp(-r*T) * computeN(-d2);
 }
+
+double Functions::computeCallIV(double S, double K, double r, double q, double P, double T) {
+    return 0;
+}
+
+double Functions::computePutIV(double S, double K, double r, double q, double P, double T) {
+    return 0;
+}
