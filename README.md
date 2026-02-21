@@ -109,7 +109,7 @@ cmake --build .
 - [x] Add Price Surfaces
 - [X] Add Gamma Surfaces
 - [x] Optimize for smooth sliders
-- [ ] Add Implied Volatility Solver
+- [X] Add Implied Volatility Solver
 - [ ] Create 3D plot (OpenGL Surface)
 - [ ] Export Surface as Image
 
