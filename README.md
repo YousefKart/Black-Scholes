@@ -2,7 +2,7 @@
 <p>An interactive desktop application for visualizing European-style option pricing using the Black-Scholes model.</p>
 <p>Built with C++17 and Qt 6, this tool allows real-time exploration of how option prices change with respect to stock price, volatility, time to expiry, and more.</p>
 
-<img width="752" height="552" alt="image" src="https://github.com/user-attachments/assets/713ac550-c287-4454-9827-b3335ffd3d4b" />
+<img width="753" height="552" alt="image" src="https://github.com/user-attachments/assets/1e76256d-e8c3-444f-a911-254232740b2c" />
 
 <hr>
 
@@ -22,6 +22,7 @@
     <li><code>(S,T) -> Vega</code></li>
     <li><code>(S,T) -> Theta</code></li>
     <li><code>(S,T) -> Rho</code></li>
+    <li><code>(S,T) -> Implied Volatility</code></li>
   </ul>
   </li>
   <li>Clean MVC-style separation:
@@ -36,7 +37,7 @@
 
 <hr>
 
-<h2>Black–Scholes Formula</h3>
+<h2>Black–Scholes Formulas</h2>
 
 <h3>1. d₁</h4>
 
