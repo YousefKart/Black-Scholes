@@ -49,7 +49,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
         Surface::SurfaceMode::STP, // (S,T) -> Price
         {
             'T', 'S', 'P',
-            "Years (T)", "Stock Price (S)", "Option Price",
+            "Time to Expiry (T) (Years)", "Stock Price (S)", "Option Price",
             Surface::InputType::RANGE, // Stock Price
             Surface::InputType::SINGLE,
             Surface::InputType::SINGLE,
@@ -89,7 +89,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
         Surface::SurfaceMode::STD, // (S,T) -> Delta
         {
             'T', 'S', 'D',
-            "Time (Years)", "Stock Price (S)", "Delta",
+            "Time to Expiry (T) (Years)", "Stock Price (S)", "Delta",
             Surface::InputType::RANGE, // Stock Price
             Surface::InputType::SINGLE,
             Surface::InputType::SINGLE,
@@ -109,7 +109,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
         Surface::SurfaceMode::STG, // (S,T) -> Gamma
         {
             'T', 'S', 'G',
-            "Time (Years)", "Stock Price (S)", "Gamma",
+            "Time to Expiry (T) (Years))", "Stock Price (S)", "Gamma",
             Surface::InputType::RANGE, // Stock Price
             Surface::InputType::SINGLE,
             Surface::InputType::SINGLE,
@@ -127,7 +127,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
         Surface::SurfaceMode::STV, // (S,T) -> Vega
         {
             'T', 'S', 'V',
-            "Time (Years)", "Stock Price (S)", "Vega",
+            "Time to Expiry (T) (Years)", "Stock Price (S)", "Vega",
             Surface::InputType::RANGE, // Stock Price
             Surface::InputType::SINGLE,
             Surface::InputType::SINGLE,
@@ -145,7 +145,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
         Surface::SurfaceMode::STH, // (S,T) -> Theta
         {
             'T', 'S', 'H',
-            "Time (Years)", "Stock Price (S)", "Theta",
+            "Time to Expiry (T) (Years)", "Stock Price (S)", "Theta",
             Surface::InputType::RANGE, // Stock Price
             Surface::InputType::SINGLE,
             Surface::InputType::SINGLE,
@@ -165,7 +165,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
         Surface::SurfaceMode::STO, // (S,T) -> Rho
         {
             'T', 'S', 'O',
-            "Time (Years)", "Stock Price (S)", "Rho",
+            "Time to Expiry (T) (Years)", "Stock Price (S)", "Rho",
             Surface::InputType::RANGE, // Stock Price
             Surface::InputType::SINGLE,
             Surface::InputType::SINGLE,
@@ -185,7 +185,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
         Surface::SurfaceMode::STM, // (S,T) -> Implied Volatility
         {
             'T', 'S', 'M',
-            "Time (Years)", "Stock Price (S)", "Implied Volatility",
+            "Time to Expiry (T) (Years)", "Stock Price (S)", "Implied Volatility",
             Surface::InputType::RANGE, // Stock Price
             Surface::InputType::SINGLE,
             Surface::InputType::SINGLE,
