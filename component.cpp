@@ -6,15 +6,15 @@ constexpr int MENU_WIDTH = 150;
 
 constexpr double INIT_MIN_STOCK_PRICE = 100.0;
 constexpr double INIT_MAX_STOCK_PRICE = 200.0;
-constexpr double INIT_MIN_STRIKE_PRICE = 100.0;
-constexpr double INIT_MAX_STRIKE_PRICE = 200.0;
+constexpr double INIT_MIN_STRIKE_PRICE = 150.0;
+constexpr double INIT_MAX_STRIKE_PRICE = 250.0;
 constexpr double INIT_MIN_RISK_FREE_RATE = 5.0;
 constexpr double INIT_MAX_RISK_FREE_RATE = 20.0;
 constexpr double INIT_MIN_DIVIDEND_YIELD = 5.0;
 constexpr double INIT_MAX_DIVIDEND_YIELD = 20.0;
 constexpr double INIT_MIN_VOLATILITY = 0.2;
 constexpr double INIT_MAX_VOLATILITY = 0.5;
-constexpr double INIT_MIN_TIME_TO_EXPIRY = 0.00;
+constexpr double INIT_MIN_TIME_TO_EXPIRY = 0.01;
 constexpr double INIT_MAX_TIME_TO_EXPIRY = 365.0;
 
 Component::Component(QWidget* parent) : QWidget(parent)
@@ -452,10 +452,10 @@ void Component::setupMenu() {
     m_button_STO->setMinimumWidth(MENU_WIDTH);
     m_button_STO->setMaximumWidth(MENU_WIDTH);
 
-    // m_button_STM = new QPushButton("(S,T) -> IV", this);
-    // m_button_STM->setCheckable(true);
-    // m_button_STM->setMinimumWidth(MENU_WIDTH);
-    // m_button_STM->setMaximumWidth(MENU_WIDTH);
+    m_button_STM = new QPushButton("(S,T) -> IV", this);
+    m_button_STM->setCheckable(true);
+    m_button_STM->setMinimumWidth(MENU_WIDTH);
+    m_button_STM->setMaximumWidth(MENU_WIDTH);
 
     m_buttonGroup = new QButtonGroup(this);
     m_buttonGroup->setExclusive(true);
@@ -468,7 +468,7 @@ void Component::setupMenu() {
     m_buttonGroup->addButton(m_button_STV, static_cast<int>(Surface::SurfaceMode::STV));
     m_buttonGroup->addButton(m_button_STH, static_cast<int>(Surface::SurfaceMode::STH));
     m_buttonGroup->addButton(m_button_STO, static_cast<int>(Surface::SurfaceMode::STO));
-    // m_buttonGroup->addButton(m_button_STM, static_cast<int>(Surface::SurfaceMode::STM));
+    m_buttonGroup->addButton(m_button_STM, static_cast<int>(Surface::SurfaceMode::STM));
 
     m_leftLayout = new QVBoxLayout();
     m_leftLayout->addWidget(m_menuTitle);
@@ -481,7 +481,7 @@ void Component::setupMenu() {
     m_leftLayout->addWidget(m_button_STV);
     m_leftLayout->addWidget(m_button_STH);
     m_leftLayout->addWidget(m_button_STO);
-    // m_leftLayout->addWidget(m_button_STM);
+    m_leftLayout->addWidget(m_button_STM);
     m_leftLayout->addStretch();
 }
 

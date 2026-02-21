@@ -29,7 +29,7 @@ public:
     static constexpr double maxLimit_q = 100.0;
     static constexpr double minLimit_sigma = 0.0001;
     static constexpr double maxLimit_sigma = 5.0;
-    static constexpr double minLimit_T = 0.0001;
+    static constexpr double minLimit_T = 0.01;
     static constexpr double maxLimit_T = 1000.0;
 
     // Convert from spin to slider or vice versa
@@ -106,7 +106,7 @@ private:
     QPushButton* m_button_STV;
     QPushButton* m_button_STH;
     QPushButton* m_button_STO;
-    // QPushButton* m_button_STM;
+    QPushButton* m_button_STM;
     QButtonGroup* m_buttonGroup;
 
     // Plot

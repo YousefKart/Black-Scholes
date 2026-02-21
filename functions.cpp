@@ -1,5 +1,6 @@
 #include "functions.h"
 #include <cmath>
+#include <algorithm>
 
 Functions::Functions() {}
 
@@ -96,10 +97,50 @@ double Functions::computePutRho(double S, double K, double r, double q, double s
     return -K * T * std::exp(-r*T) * computeN(-d2);
 }
 
-double Functions::computeCallIV(double S, double K, double r, double q, double P, double T) {
-    return 0;
+double Functions::computeCallIV(double S, double K, double r, double q, double MP, double T) {
+    const int MAX_ITERATIONS = 100;
+    const double TOLERANCE = 1e-8;
+
+    double sigma = 0.2; // Initial Guess
+    double price, vega, diff;
+
+    for (int i = 0; i < MAX_ITERATIONS; i++) {
+        price = computeCallPrice(S, K, r, q, sigma, T);
+        vega = computeVega(S, K, r, q, sigma, T);
+        diff = price - MP;
+
+        if (std::abs(diff) < TOLERANCE)
+            break;
+        if (vega < 1e-12 * std::max(1.0, S)) // Scaled tolerance
+            return NAN;
+
+        sigma -= diff / vega;
+        sigma = std::clamp(sigma, 1e-4, 5.0);
+    }
+
+    return sigma;
 }
 
-double Functions::computePutIV(double S, double K, double r, double q, double P, double T) {
-    return 0;
+double Functions::computePutIV(double S, double K, double r, double q, double MP, double T) {
+    const int MAX_ITERATIONS = 100;
+    const double TOLERANCE = 1e-8;
+
+    double sigma = 0.2; // Initial Guess
+    double price, vega, diff;
+
+    for (int i = 0; i < MAX_ITERATIONS; i++) {
+        price = computePutPrice(S, K, r, q, sigma, T);
+        vega = computeVega(S, K, r, q, sigma, T);
+        diff = price - MP;
+
+        if (std::abs(diff) < TOLERANCE)
+            break;
+        if (vega < 1e-12 * std::max(1.0, S))
+            return NAN;
+
+        sigma -= diff / vega;
+        sigma = std::clamp(sigma, 1e-4, 5.0);
+    }
+
+    return sigma;
 }

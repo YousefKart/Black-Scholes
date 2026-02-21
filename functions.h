@@ -27,8 +27,8 @@ public:
     static double computePutRho(double S, double K, double r, double q, double sigma, double T);
 
     // Implied Volatility
-    static double computeCallIV(double S, double K, double r, double q, double P, double T);
-    static double computePutIV(double S, double K, double r, double q, double P, double T);
+    static double computeCallIV(double S, double K, double r, double q, double MP, double T);
+    static double computePutIV(double S, double K, double r, double q, double MP, double T);
 
 };
 

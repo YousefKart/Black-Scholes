@@ -182,7 +182,7 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
     },
 
     {
-        Surface::SurfaceMode::STD, // (S,T) -> Implied Volatility
+        Surface::SurfaceMode::STM, // (S,T) -> Implied Volatility
         {
             'T', 'S', 'M',
             "Time (Years)", "Stock Price (S)", "Implied Volatility",
@@ -195,8 +195,8 @@ std::unordered_map<Surface::SurfaceMode, Surface::SurfaceConfig> Surface::surfac
 
             [] (OptionMode mode, double S, double K, double r, double q, double sigma, double T) {
                 return mode == OptionMode::PUT
-                           ? Functions::computePutIV(S, K, r, q, sigma, T)
-                           : Functions::computeCallIV(S, K, r, q, sigma, T);
+                        ? Functions::computePutIV(S, K, r, q, Functions::computePutPrice(S, K, r, q, sigma, T), T)
+                           : Functions::computeCallIV(S, K, r, q, Functions::computeCallPrice(S, K, r, q, sigma, T), T);
             }
         }
     },

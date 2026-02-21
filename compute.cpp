@@ -110,7 +110,7 @@ void Compute::recompute() {
     }
 
     ui.toggle_CP()->setText(mode == Surface::OptionMode::PUT ? "Mode: Puts" : "Mode: Calls");
-    ui.colorScale()->axis()->setLabel(mode == Surface::OptionMode::PUT ? "Put Price" : "Call Price");
+    ui.colorScale()->axis()->setLabel(config.zLabel);
     ui.colorMap()->rescaleDataRange(true);
     ui.plot()->xAxis->setLabel(config.xLabel);
     ui.plot()->yAxis->setLabel(config.yLabel);
