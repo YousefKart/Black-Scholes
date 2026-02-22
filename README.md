@@ -105,14 +105,24 @@ cmake --build .
 
 <h2>Roadmap</h2>
 
-- [x] Connect input fields
-- [x] Create heat map
-- [x] Add Price Surfaces
-- [X] Add Gamma Surfaces
-- [x] Optimize for smooth sliders
-- [X] Add Implied Volatility Solver
-- [ ] Create 3D plot (OpenGL Surface)
-- [ ] Export Surface as Image
+<h3>Core Model Implementation</h3>
+
+- [x] Black-Scholes closed-form pricing (Call/Put)
+- [x] Greejs (Delta, Gamma, Vega, Theta, Rho)
+- [x] Implied Volatility (Newton-Raphson)
+
+<h3>Visualization Engine</h3>
+
+- [x] 2D Parameter sweeps
+- [x] Dynamic heat maps
+- [x] Real-time UI parameter binding
+
+<h3>Numerical Stability & Performance</h3>
+
+- [x] Log-domain transformations for stability
+- [x] Edge-case handling (T,σ -> 0)
+- [x] Optimized slider responsiveness
+- [x] Efficient grid evaluation
 
 <hr>
 
