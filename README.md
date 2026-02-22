@@ -108,7 +108,7 @@ cmake --build .
 <h3>Core Model Implementation</h3>
 
 - [x] Black-Scholes closed-form pricing (Call/Put)
-- [x] Greejs (Delta, Gamma, Vega, Theta, Rho)
+- [x] Greeks (Delta, Gamma, Vega, Theta, Rho)
 - [x] Implied Volatility (Newton-Raphson)
 
 <h3>Visualization Engine</h3>
@@ -120,7 +120,7 @@ cmake --build .
 <h3>Numerical Stability & Performance</h3>
 
 - [x] Log-domain transformations for stability
-- [x] Edge-case handling (T,σ -> 0)
+- [x] Edge case handling (T,σ -> 0)
 - [x] Optimized slider responsiveness
 - [x] Efficient grid evaluation
 
