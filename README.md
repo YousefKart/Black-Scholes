@@ -97,8 +97,12 @@ $$
 ```bash
 mkdir build
 cd build
-cmake ..
-cmake --build .
+
+cmake .. -DCMAKE_PREFIX_PATH="C:/Qt/6.x.x/msvc2022_64"
+cmake --build . --config Debug
+
+"C:/Qt/6.x.x/msvc2022_64/bin/windeployqt.exe" Debug/Black-Scholes.exe
+.\Debug\Black-Scholes.exe
 ```
 
 <hr>
